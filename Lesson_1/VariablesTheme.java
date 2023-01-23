@@ -22,8 +22,8 @@ public class VariablesTheme {
         System.out.println("2) Расчет стоимости товара со скидкой:");
         int penPrice = 100;
         int bookPrice = 200;
-        double absolutePercent = 0.11;
-        double discountAmount = (penPrice + bookPrice) * absolutePercent;
+        double discountProcent = 0.11;
+        double discountAmount = (penPrice + bookPrice) * discountProcent;
         double discountPrice = (penPrice + bookPrice) - discountAmount;
         System.out.println("\tСумма скидки: " + discountAmount + " руб.");
         System.out.println("\tОбщая сумма покупки: " + discountPrice + " руб. \n");
@@ -76,8 +76,8 @@ public class VariablesTheme {
 
         System.out.println("6) Вывод символов и их кодов:");
         System.out.println("\tCode\tSymbol");
-        char numberSign = '#';
-        System.out.println("\t " + (int) numberSign + "\t  " + numberSign);
+        char hashtag = '#';
+        System.out.println("\t " + (int) hashtag + "\t  " + hashtag);
         char ampersand = '&';
         System.out.println("\t " + (int) ampersand + "\t  " + ampersand);
         char atSign = '@';
