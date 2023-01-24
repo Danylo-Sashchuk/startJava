@@ -43,5 +43,30 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("\tЧисла " + num1 + " и " + num2 + " равны.");
         }
+
+        System.out.print("\n3) Проверка числа: ");
+        int number = -4;
+        System.out.println(number);
+        if (number == 0) {
+            System.out.println("\tВходящее число равно нулю.");
+        } else {
+            if (number % 2 == 0) {
+                System.out.println("\tВходящее число является четным.");
+            }
+            else {
+                System.out.println("\tВходящее число является нечетным.");
+            }
+            if (number > 0) {
+                System.out.println("\tВходящее число является положительным.");
+            }
+            else {
+                System.out.println("\tВходящее число является отрицательным.");
+            }
+        }
+
+        System.out.println("\n 4)Поиск одинаковых цифр в числах");
+        num1 = 123;
+        num2 = 833;
+        if()
     }
 }
