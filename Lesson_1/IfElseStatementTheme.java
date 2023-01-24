@@ -52,14 +52,12 @@ public class IfElseStatementTheme {
         } else {
             if (number % 2 == 0) {
                 System.out.println("\tВходящее число является четным.");
-            }
-            else {
+            } else {
                 System.out.println("\tВходящее число является нечетным.");
             }
             if (number > 0) {
                 System.out.println("\tВходящее число является положительным.");
-            }
-            else {
+            } else {
                 System.out.println("\tВходящее число является отрицательным.");
             }
         }
@@ -93,46 +91,46 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6) Подсчет суммы вклада и начисленных банком %:");
         int deposit = 300_000;
-        double procent;
+        double percent;
         if (deposit < 100_000) {
-            procent = 0.05;
+            percent = 0.05;
         } else if (deposit >= 100_000 && deposit <= 300_000) {
-            procent = 0.07;
+            percent = 0.07;
         } else {
-            procent = 0.1;
+            percent = 0.1;
         }
-        double interest = deposit * procent;
+        double interest = deposit * percent;
         System.out.println("\tСумма вклада: " + deposit);
         System.out.println("\tНачисленный процент: " + interest);
         System.out.println("\tИтоговая сумма: " + (deposit + interest));
 
         System.out.println("\n7) Определение оценки по предметам:");
-        int historyProcent = 59;
-        int programmingProcent = 91;
-        int history;
-        int programming;
-        if (historyProcent > 91) {
-            history = 5;
-        } else if (historyProcent > 73) {
-            history = 4;
-        } else if (historyProcent > 60) {
-            history = 3;
+        int historyPercent = 59;
+        int programmingPercent = 91;
+        int historyGrade;
+        int programmingGrade;
+        if (historyPercent > 91) {
+            historyGrade = 5;
+        } else if (historyPercent > 73) {
+            historyGrade = 4;
+        } else if (historyPercent > 60) {
+            historyGrade = 3;
         } else {
-            history = 2;
+            historyGrade = 2;
         }
-        if (programmingProcent > 91) {
-            programming = 5;
-        } else if (programmingProcent > 73) {
-            programming = 4;
-        } else if (programmingProcent > 60) {
-            programming = 3;
+        if (programmingPercent > 91) {
+            programmingGrade = 5;
+        } else if (programmingPercent > 73) {
+            programmingGrade = 4;
+        } else if (programmingPercent > 60) {
+            programmingGrade = 3;
         } else {
-            programming = 2;
+            programmingGrade = 2;
         }
-        System.out.println("\tИстория: " + history);
-        System.out.println("\tПрограммирование: " + programming);
-        System.out.println("\tСредний бал: " + ((history + programming) / 2));
-        System.out.println("\tСредний процент: " + ((historyProcent + programmingProcent) / 2));
+        System.out.println("\tИстория: " + historyGrade);
+        System.out.println("\tПрограммирование: " + programmingGrade);
+        System.out.println("\tСредний бал: " + ((historyGrade + programmingGrade) / 2));
+        System.out.println("\tСредний процент: " + ((historyPercent + programmingPercent) / 2));
 
         System.out.println("\n8) Расчет прибыли за год:");
         int rent = 5_000;
@@ -156,8 +154,6 @@ public class IfElseStatementTheme {
         int tensInATM = 5;
         int onesInATM = 50;
         int needHundreds = goal / 100;
-        int needTens;
-        int needOnes;
         if (hundredsInATM >= needHundreds) {
             sum += needHundreds * 100;
             hundredsOnHands = needHundreds;
@@ -165,7 +161,7 @@ public class IfElseStatementTheme {
             sum += hundredsInATM * 100;
             hundredsOnHands = hundredsInATM;
         }
-        needTens = goal - (sum / 10);
+        int needTens = goal - (sum / 10);
         if (tensInATM >= needTens) {
             sum += needTens * 10;
             tensOnHands = needTens;
@@ -173,7 +169,7 @@ public class IfElseStatementTheme {
             sum += tensInATM * 10;
             tensOnHands = tensInATM;
         }
-        needOnes = goal - sum;
+        int needOnes = goal - sum;
         if (onesInATM >= needOnes){
             sum += needOnes;
             onesOnHands = needOnes;
@@ -188,7 +184,7 @@ public class IfElseStatementTheme {
             System.out.println("\tТребуется " + tensOnHands + " десятков");
             System.out.println("\tТребуется " + onesOnHands + " единиц");
             System.out.println("\tВам выдаётся " + sum + "$ в " + (hundredsOnHands + tensOnHands + 
-            onesOnHands) + " купюрах.");
+                    onesOnHands) + " купюрах.");
         }
         int test = onesOnHands + tensOnHands * 10 + hundredsOnHands * 100;
         if (test != goal) {
