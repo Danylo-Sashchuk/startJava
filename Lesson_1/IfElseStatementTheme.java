@@ -145,5 +145,54 @@ public class IfElseStatementTheme {
         } else {
             System.out.println(profit);
         }
+
+        System.out.println("\n9) Подсчет количества банкнот:");
+        int goal = 567;
+        int sum = 0;
+        int hundredsOnHands = 0;
+        int tensOnHands = 0;
+        int onesOnHands = 0;
+        int hundredsInATM = 10;
+        int tensInATM = 5;
+        int onesInATM = 50;
+        int needHundreds = goal / 100;
+        int needTens;
+        int needOnes;
+        if (hundredsInATM >= needHundreds) {
+            sum += needHundreds * 100;
+            hundredsOnHands = needHundreds;
+        } else {
+            sum += hundredsInATM * 100;
+            hundredsOnHands = hundredsInATM;
+        }
+        needTens = goal - (sum / 10);
+        if (tensInATM >= needTens) {
+            sum += needTens * 10;
+            tensOnHands = needTens;
+        } else {
+            sum += tensInATM * 10;
+            tensOnHands = tensInATM;
+        }
+        needOnes = goal - sum;
+        if (onesInATM >= needOnes){
+            sum += needOnes;
+            onesOnHands = needOnes;
+        } else {
+            sum += onesInATM;
+            onesOnHands = onesInATM;
+        }
+        if (sum < goal) {
+            System.out.println("\tВ банкомате не хватает купюр!");
+        } else {
+            System.out.println("\tТребуется " + hundredsOnHands + " сотен");
+            System.out.println("\tТребуется " + tensOnHands + " десятков");
+            System.out.println("\tТребуется " + onesOnHands + " единиц");
+            System.out.println("\tВам выдаётся " + sum + "$ в " + (hundredsOnHands + tensOnHands + 
+            onesOnHands) + " купюрах.");
+        }
+        int test = onesOnHands + tensOnHands * 10 + hundredsOnHands * 100;
+        if (test != goal) {
+            System.out.println("Проверка выявила ошибку, исчесления не верны.");
+        }
     }
 }
