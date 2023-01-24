@@ -65,17 +65,30 @@ public class IfElseStatementTheme {
         }
 
         System.out.print("\n 4) Поиск одинаковых цифр в числах ");
-        num1 = 143;
-        num2 = 125;
+        num1 = 941;
+        num2 = 991;
         System.out.println(num1 + " и " + num2 + ":");
         if (num1 % 10 == num2 % 10) {
-            System.out.println("Одинаковый первый разряд, а именно число " + (num1 % 10));
+            System.out.println("\tОдинаковый первый разряд, а именно число " + (num1 % 10));
         }
         if (num1 % 100 / 10 == num2 % 100 / 10) {
-            System.out.println("Одинаковый второй разряд, а именно число " + (num1 % 100 / 10));
+            System.out.println("\tОдинаковый второй разряд, а именно число " + (num1 % 100 / 10));
         }
         if (num1 / 100 == num2 / 100 ) {
-            System.out.println("Одинаковый третий разряд, а именно число " + (num1 / 100));
+            System.out.println("\tОдинаковый третий разряд, а именно число " + (num1 / 100));
+        }
+
+        System.out.println("\n5) Определение символа по его коду: ");
+        char symbol = '\u0057';
+        System.out.print("\tСимвол '" + symbol + "'");
+        if (symbol >= 'a' && symbol <= 'z') {
+            System.out.println(" это маленькая буква.");
+        } else if (symbol >= 'A' && symbol <= 'Z') {
+            System.out.println(" это большая буква.");
+        } else if (symbol >= '0' && symbol <= '9') {
+            System.out.println(" это число.");
+        } else {
+            System.out.println(" это не буква и не число.");
         }
     }
 }
