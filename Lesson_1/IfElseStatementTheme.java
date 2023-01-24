@@ -64,9 +64,18 @@ public class IfElseStatementTheme {
             }
         }
 
-        System.out.println("\n 4)Поиск одинаковых цифр в числах");
-        num1 = 123;
-        num2 = 833;
-        if()
+        System.out.print("\n 4) Поиск одинаковых цифр в числах ");
+        num1 = 143;
+        num2 = 125;
+        System.out.println(num1 + " и " + num2 + ":");
+        if (num1 % 10 == num2 % 10) {
+            System.out.println("Одинаковый первый разряд, а именно число " + (num1 % 10));
+        }
+        if (num1 % 100 / 10 == num2 % 100 / 10) {
+            System.out.println("Одинаковый второй разряд, а именно число " + (num1 % 100 / 10));
+        }
+        if (num1 / 100 == num2 / 100 ) {
+            System.out.println("Одинаковый третий разряд, а именно число " + (num1 / 100));
+        }
     }
 }
