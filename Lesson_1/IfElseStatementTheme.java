@@ -133,5 +133,17 @@ public class IfElseStatementTheme {
         System.out.println("\tПрограммирование: " + programming);
         System.out.println("\tСредний бал: " + ((history + programming) / 2));
         System.out.println("\tСредний процент: " + ((historyProcent + programmingProcent) / 2));
+
+        System.out.println("\n8) Расчет прибыли за год:");
+        int rent = 5_000;
+        int income = 13_000;
+        int costPrice = 9_000;
+        int profit = income - rent - costPrice;
+        System.out.print("\tПрибыль за год: ");
+        if (profit > 0) {
+            System.out.println("+" + profit);
+        } else {
+            System.out.println(profit);
+        }
     }
 }
