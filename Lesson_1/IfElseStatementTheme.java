@@ -90,5 +90,48 @@ public class IfElseStatementTheme {
         } else {
             System.out.println(" это не буква и не число.");
         }
+
+        System.out.println("\n6) Подсчет суммы вклада и начисленных банком %:");
+        int deposit = 300_000;
+        double procent;
+        if (deposit < 100_000) {
+            procent = 0.05;
+        } else if (deposit >= 100_000 && deposit <= 300_000) {
+            procent = 0.07;
+        } else {
+            procent = 0.1;
+        }
+        double interest = deposit * procent;
+        System.out.println("\tСумма вклада: " + deposit);
+        System.out.println("\tНачисленный процент: " + interest);
+        System.out.println("\tИтоговая сумма: " + (deposit + interest));
+
+        System.out.println("\n7) Определение оценки по предметам:");
+        int historyProcent = 59;
+        int programmingProcent = 91;
+        int history;
+        int programming;
+        if (historyProcent > 91) {
+            history = 5;
+        } else if (historyProcent > 73) {
+            history = 4;
+        } else if (historyProcent > 60) {
+            history = 3;
+        } else {
+            history = 2;
+        }
+        if (programmingProcent > 91) {
+            programming = 5;
+        } else if (programmingProcent > 73) {
+            programming = 4;
+        } else if (programmingProcent > 60) {
+            programming = 3;
+        } else {
+            programming = 2;
+        }
+        System.out.println("\tИстория: " + history);
+        System.out.println("\tПрограммирование: " + programming);
+        System.out.println("\tСредний бал: " + ((history + programming) / 2));
+        System.out.println("\tСредний процент: " + ((historyProcent + programmingProcent) / 2));
     }
 }
