@@ -3,15 +3,15 @@ public class CyclesTheme {
         System.out.println("1) Подсчет суммы четных и нечетных чисел:");
         int evenSum = 0;
         int oddSum = 0;
-        int counter = -10;
+        int pointer = -10;
         do {
-            if (counter % 2 == 0) {
-                evenSum += counter;
+            if (pointer % 2 == 0) {
+                evenSum += pointer;
             } else {
-                oddSum += counter;
+                oddSum += pointer;
             }
-            counter += 1;
-        } while (counter <= 21);
+            pointer += 1;
+        } while (pointer <= 21);
         System.out.println("\tВ промежутке [-10; 21] сумма четных чисел = " + evenSum +
                 ", а нечетных = " + oddSum);
 
@@ -48,5 +48,43 @@ public class CyclesTheme {
             System.out.print(temp);
         }
         System.out.println("\n\tСумма его чисел: " + sum);
+
+        System.out.println("\n4) Вывод чисел на консоль в несколько строк: ");
+        int start = 1;
+        int end = 24;
+        int numbersInLine = 0;
+        for (int i = start; i < end; i += 2) {
+            if (numbersInLine == 5) {
+                numbersInLine = 0;
+                System.out.println();
+            }
+            System.out.printf("%3d", i);
+            numbersInLine += 1;
+        }
+        while (numbersInLine < 5) {
+            System.out.printf("%3d", 0);
+            numbersInLine += 1;
+        }
+
+        System.out.println("\n\n5) Проверка количества двоек на четность/нечетность: ");
+        number = 3242592;
+        int counter = 0;
+        int temp = number;
+        while (temp != 0) {
+            if (temp % 10 == 2) {
+                counter += 1;
+            }
+            temp /= 10;
+        }
+        boolean isEven = false;
+        if (counter % 2 == 0) {
+            isEven = true;
+        }
+        System.out.print("\tЧисло " + number + " содержит");
+        if (isEven) {
+            System.out.println(" четное количество двоек.");
+        } else {
+            System.out.println(" нечетное количество двоек.");
+        }
     }
 }
