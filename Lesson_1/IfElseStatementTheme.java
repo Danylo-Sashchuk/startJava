@@ -63,19 +63,25 @@ public class IfElseStatementTheme {
         }
 
         System.out.print("\n4) Поиск одинаковых цифр в числах ");
-        num1 = 941;
-        num2 = 991;
+        num1 = 991;
+        num2 = 113;
+        boolean isCommon = false;
         System.out.println(num1 + " и " + num2 + ":");
         if (num1 % 10 == num2 % 10) {
-            System.out.println("\tОдинаковый первый разряд, а именно число " + (num1 % 10));
+            System.out.println("\tОдинаковый первый разряд: " + (num1 % 10));
+            isCommon = true;
         }
         if (num1 % 100 / 10 == num2 % 100 / 10) {
-            System.out.println("\tОдинаковый второй разряд, а именно число " + (num1 % 100 / 10));
+            System.out.println("\tОдинаковый второй разряд: " + (num1 % 100 / 10));
+            isCommon = true;
         }
-        if (num1 / 100 == num2 / 100 ) {
-            System.out.println("\tОдинаковый третий разряд, а именно число " + (num1 / 100));
+        if (num1 / 100 == num2 / 100) {
+            System.out.println("\tОдинаковый третий разряд: " + (num1 / 100));
+            isCommon = true;
         }
-
+        if (!isCommon) {
+            System.out.println("\tОдинаковых цифр нет.");
+        }
         System.out.println("\n5) Определение символа по его коду: ");
         char symbol = '\u0057';
         System.out.print("\tСимвол '" + symbol + "'");
