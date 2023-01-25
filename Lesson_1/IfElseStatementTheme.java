@@ -65,21 +65,21 @@ public class IfElseStatementTheme {
         System.out.print("\n4) Поиск одинаковых цифр в числах ");
         num1 = 991;
         num2 = 113;
-        boolean isCommon = false;
+        boolean isEquals = false;
         System.out.println(num1 + " и " + num2 + ":");
         if (num1 % 10 == num2 % 10) {
             System.out.println("\tОдинаковый первый разряд: " + (num1 % 10));
-            isCommon = true;
+            isEquals = true;
         }
         if (num1 % 100 / 10 == num2 % 100 / 10) {
             System.out.println("\tОдинаковый второй разряд: " + (num1 % 100 / 10));
-            isCommon = true;
+            isEquals = true;
         }
         if (num1 / 100 == num2 / 100) {
             System.out.println("\tОдинаковый третий разряд: " + (num1 / 100));
-            isCommon = true;
+            isEquals = true;
         }
-        if (!isCommon) {
+        if (!isEquals) {
             System.out.println("\tОдинаковых цифр нет.");
         }
 
