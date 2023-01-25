@@ -82,6 +82,7 @@ public class IfElseStatementTheme {
         if (!isCommon) {
             System.out.println("\tОдинаковых цифр нет.");
         }
+
         System.out.println("\n5) Определение символа по его коду: ");
         char symbol = '\u0057';
         System.out.print("\tСимвол '" + symbol + "'");
@@ -97,7 +98,7 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6) Подсчет суммы вклада и начисленных банком %:");
         int deposit = 300_000;
-        double percent;
+        double percent = 0;
         if (deposit < 100_000) {
             percent = 0.05;
         } else if (deposit >= 100_000 && deposit <= 300_000) {
@@ -142,7 +143,7 @@ public class IfElseStatementTheme {
         int rent = 5_000;
         int income = 13_000;
         int costPrice = 9_000;
-        int profit = income - rent - costPrice;
+        int profit = 12 * (income - rent - costPrice);
         System.out.print("\tПрибыль за год: ");
         if (profit > 0) {
             System.out.println("+" + profit);
@@ -176,7 +177,7 @@ public class IfElseStatementTheme {
             tensOnHands = tensInATM;
         }
         int needOnes = goal - sum;
-        if (onesInATM >= needOnes){
+        if (onesInATM >= needOnes) {
             sum += needOnes;
             onesOnHands = needOnes;
         } else {
@@ -194,7 +195,7 @@ public class IfElseStatementTheme {
         }
         int test = onesOnHands + tensOnHands * 10 + hundredsOnHands * 100;
         if (test != goal) {
-            System.out.println("Проверка выявила ошибку, исчесления не верны.");
+            System.out.println("Проверка выявила ошибку, исчисления не верны.");
         }
     }
 }
