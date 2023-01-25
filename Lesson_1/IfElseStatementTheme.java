@@ -98,13 +98,11 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6) Подсчет суммы вклада и начисленных банком %:");
         int deposit = 300_000;
-        double percent = 0;
+        double percent = 0.01;
         if (deposit < 100_000) {
             percent = 0.05;
-        } else if (deposit >= 100_000 && deposit <= 300_000) {
+        } else if (deposit <= 300_000) {
             percent = 0.07;
-        } else {
-            percent = 0.1;
         }
         double interest = deposit * percent;
         System.out.println("\tСумма вклада: " + deposit);
@@ -114,16 +112,14 @@ public class IfElseStatementTheme {
         System.out.println("\n7) Определение оценки по предметам:");
         int historyPercent = 59;
         int programmingPercent = 91;
-        int historyGrade;
-        int programmingGrade;
+        int historyGrade = 2;
+        int programmingGrade = 2;
         if (historyPercent > 91) {
             historyGrade = 5;
         } else if (historyPercent > 73) {
             historyGrade = 4;
         } else if (historyPercent > 60) {
             historyGrade = 3;
-        } else {
-            historyGrade = 2;
         }
         if (programmingPercent > 91) {
             programmingGrade = 5;
@@ -131,8 +127,6 @@ public class IfElseStatementTheme {
             programmingGrade = 4;
         } else if (programmingPercent > 60) {
             programmingGrade = 3;
-        } else {
-            programmingGrade = 2;
         }
         System.out.println("\tИстория: " + historyGrade);
         System.out.println("\tПрограммирование: " + programmingGrade);
