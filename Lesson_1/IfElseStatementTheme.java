@@ -45,24 +45,24 @@ public class IfElseStatementTheme {
         }
 
         System.out.print("\n3) Проверка числа: ");
-        int number = -4;
+        int number = 5;
         System.out.println(number);
         if (number == 0) {
-            System.out.println("\tВходящее число равно нулю.");
+            System.out.println("\tЧисло равно нулю.");
         } else {
             if (number % 2 == 0) {
-                System.out.println("\tВходящее число является четным.");
+                System.out.print("\tЧисло является четным");
             } else {
-                System.out.println("\tВходящее число является нечетным.");
+                System.out.print("\tЧисло является нечетным");
             }
             if (number > 0) {
-                System.out.println("\tВходящее число является положительным.");
+                System.out.println(" и положительным.");
             } else {
-                System.out.println("\tВходящее число является отрицательным.");
+                System.out.println(" и отрицательным.");
             }
         }
 
-        System.out.print("\n 4) Поиск одинаковых цифр в числах ");
+        System.out.print("\n4) Поиск одинаковых цифр в числах ");
         num1 = 941;
         num2 = 991;
         System.out.println(num1 + " и " + num2 + ":");
