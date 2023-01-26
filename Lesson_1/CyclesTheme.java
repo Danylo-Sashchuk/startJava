@@ -139,6 +139,44 @@ public class CyclesTheme {
             System.out.printf("\t%3d%5s\n", i, curSymbol);
         }
 
-        
+                System.out.println("\n8) Проверка, является ли число палиндромом: ");
+        number = 9233129;
+        temp = number;
+        int reverseNumber = 0;
+        while (temp != 0) {
+            reverseNumber = reverseNumber * 10 + temp % 10;
+            temp /= 10;
+        }
+        if (reverseNumber == number) {
+            System.out.println("Число " + number + " является палиндромом.");
+        } else {
+            System.out.println("Число " + number + " не является палиндромом.");
+        }
+
+        System.out.println("\n9) Определение, является ли число счастливым");
+        number = 300111;
+        int sum1 = 0;
+        int sum2 = 0;
+        System.out.print("\tСумма цифр ");
+        for (int i = 0; i < 3; i++) {
+            temp = number % 10;
+            System.out.print(temp);
+            sum1 += temp;
+            number /= 10;
+        }
+        System.out.print(" = " + sum1 + "\n\tСумма цифр ");
+        for (int i = 0; i < 3; i++) {
+            temp = number % 10;
+            System.out.print(temp);
+            sum2 += temp;
+            number /= 10;
+        }
+        System.out.println(" = " + sum2);
+        if (sum1 == sum2) {
+            System.out.println("\tЧисло является счастливым.");
+        } else {
+            System.out.println("\tЧисло не является счастливым.");
+        }
+
     }
 }
