@@ -139,7 +139,7 @@ public class CyclesTheme {
             System.out.printf("\t%3d%5s\n", i, curSymbol);
         }
 
-                System.out.println("\n8) Проверка, является ли число палиндромом: ");
+        System.out.println("\n8) Проверка, является ли число палиндромом: ");
         number = 9233129;
         temp = number;
         int reverseNumber = 0;
