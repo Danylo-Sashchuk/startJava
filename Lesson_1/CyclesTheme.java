@@ -86,5 +86,59 @@ public class CyclesTheme {
         } else {
             System.out.println(" нечетное количество двоек.");
         }
+
+        System.out.println("\n6) Отображение фигур в консоли: ");
+        char symbol = '*';
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print(symbol);
+            }
+            System.out.println();
+        }
+        symbol = '#';
+        counter = 5;
+        while (counter > 0) {
+            temp = counter;
+            while (temp > 0) {
+                System.out.print(symbol);
+                temp -= 1;
+            }
+            System.out.println();
+            counter -= 1;
+        }
+        symbol = '$';
+        counter = 0;
+        do {
+            temp = 0;
+            counter += 1;
+            do {
+                temp += 1;
+                System.out.print(symbol);
+            } while (temp < counter);
+            System.out.println();
+        } while (counter < 3);
+        counter = 2;
+        do {
+            temp = 0;
+            do {
+                temp += 1;
+                System.out.print(symbol);
+            } while (temp < counter);
+            counter -= 1;
+            System.out.println();
+        } while (counter > 0);
+
+        System.out.println("\n7) Отображение ASCII-символов: ");
+        System.out.printf("\t%S%5S\n", "DEC", "CHAR");
+        for (int i = 33; i < 48; i += 2) {
+            char curSymbol = (char)i;
+            System.out.printf("\t%3d%5s\n", i, curSymbol);
+        }
+        for (int i = 98; i < 123; i += 2) {
+            char curSymbol = (char)i;
+            System.out.printf("\t%3d%5s\n", i, curSymbol);
+        }
+
+        
     }
 }
