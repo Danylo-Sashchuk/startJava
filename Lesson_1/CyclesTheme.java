@@ -16,22 +16,22 @@ public class CyclesTheme {
                 ", а нечетных = " + sumOdd);
 
         System.out.println("\n2) Вывод чисел в интервале (min и max) в порядке убывания: ");
-        int num1 = 10;
-        int num2 = 5;
-        int num3 = -1;
-        int min = num1;
-        if (num2 < min) {
-            min = num2;
+        int number1 = 10;
+        int number2 = 5;
+        int number3 = -1;
+        int min = number1;
+        if (number2 < min) {
+            min = number2;
         }
-        if (num3 < min) {
-            min = num3;
+        if (number3 < min) {
+            min = number3;
         }
-        int max = num1;
-        if (num2 > max) {
-            max = num2;
+        int max = number1;
+        if (number2 > max) {
+            max = number2;
         }
-        if (num3 > max) {
-            max = num3;
+        if (number3 > max) {
+            max = number3;
         }
         for (int i = max - 1; i > min; i--) {
             System.out.print(i + " ");
