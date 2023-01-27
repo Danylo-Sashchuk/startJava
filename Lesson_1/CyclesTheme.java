@@ -59,11 +59,10 @@ public class CyclesTheme {
                 System.out.println();
             }
             System.out.printf("%3d", i);
-            numbersInLine += 1;
+            numbersInLine++;
         }
-        while (numbersInLine < 5) {
+        for (int i = numbersInLine; i < 5; i++) {
             System.out.printf("%3d", 0);
-            numbersInLine += 1;
         }
 
         System.out.println("\n\n5) Проверка количества двоек на четность/нечетность: ");
