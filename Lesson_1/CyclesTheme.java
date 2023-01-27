@@ -41,11 +41,11 @@ public class CyclesTheme {
         int number = 1234;
         int sum = 0;
         System.out.print("\tРеверсивное число: ");
-        while (number != 0) {
-            int temp = number % 10;
-            sum += temp;
+        while (number > 0) {
+            int digit = number % 10;
+            sum += digit;
             number /= 10;
-            System.out.print(temp);
+            System.out.print(digit);
         }
         System.out.println("\n\tСумма его чисел: " + sum);
 
