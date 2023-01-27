@@ -96,18 +96,18 @@ public class CyclesTheme {
             int temp = counter;
             while (temp > 0) {
                 System.out.print(symbol);
-                temp -= 1;
+                temp--;
             }
             System.out.println();
-            counter -= 1;
+            counter--;
         }
         symbol = '$';
         counter = 0;
         do {
             int temp = 0;
-            counter += 1;
+            counter++;
             do {
-                temp += 1;
+                temp++;
                 System.out.print(symbol);
             } while (temp < counter);
             System.out.println();
@@ -116,10 +116,10 @@ public class CyclesTheme {
         do {
             int temp = 0;
             do {
-                temp += 1;
+                temp++;
                 System.out.print(symbol);
             } while (temp < counter);
-            counter -= 1;
+            counter--;
             System.out.println();
         } while (counter > 0);
 
