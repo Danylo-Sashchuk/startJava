@@ -136,11 +136,11 @@ public class CyclesTheme {
 
         System.out.println("\n8) Проверка, является ли число палиндромом: ");
         number = 9233129;
-        int temp = number;
+        copyNumber = number;
         int reverseNumber = 0;
-        while (temp > 0) {
-            reverseNumber = reverseNumber * 10 + temp % 10;
-            temp /= 10;
+        while (copyNumber > 0) {
+            reverseNumber = reverseNumber * 10 + copyNumber % 10;
+            copyNumber /= 10;
         }
         if (reverseNumber == number) {
             System.out.println("Число " + number + " является палиндромом.");
@@ -154,16 +154,16 @@ public class CyclesTheme {
         int sum2 = 0;
         System.out.print("\tСумма цифр ");
         for (int i = 0; i < 3; i++) {
-            temp = number % 10;
-            System.out.print(temp);
-            sum1 += temp;
+            int digit = number % 10;
+            System.out.print(digit);
+            sum1 += digit;
             number /= 10;
         }
         System.out.print(" = " + sum1 + "\n\tСумма цифр ");
         for (int i = 0; i < 3; i++) {
-            temp = number % 10;
-            System.out.print(temp);
-            sum2 += temp;
+            int digit = number % 10;
+            System.out.print(digit);
+            sum2 += digit;
             number /= 10;
         }
         System.out.println(" = " + sum2);
