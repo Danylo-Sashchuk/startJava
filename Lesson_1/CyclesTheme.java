@@ -67,20 +67,16 @@ public class CyclesTheme {
 
         System.out.println("\n\n5) Проверка количества двоек на четность/нечетность: ");
         number = 3242592;
-        counter = 0;
-        int temp = number;
-        while (temp != 0) {
-            if (temp % 10 == 2) {
-                counter += 1;
+        int counterTwos = 0;
+        int copyNumber = number;
+        while (copyNumber > 0) {
+            if (copyNumber % 10 == 2) {
+                counterTwos++;
             }
-            temp /= 10;
-        }
-        boolean isEven = false;
-        if (counter % 2 == 0) {
-            isEven = true;
+            copyNumber /= 10;
         }
         System.out.print("\tЧисло " + number + " содержит");
-        if (isEven) {
+        if (counterTwos % 2 == 0) {
             System.out.println(" четное количество двоек.");
         } else {
             System.out.println(" нечетное количество двоек.");
@@ -97,7 +93,7 @@ public class CyclesTheme {
         symbol = '#';
         counter = 5;
         while (counter > 0) {
-            temp = counter;
+            int temp = counter;
             while (temp > 0) {
                 System.out.print(symbol);
                 temp -= 1;
@@ -108,7 +104,7 @@ public class CyclesTheme {
         symbol = '$';
         counter = 0;
         do {
-            temp = 0;
+            int temp = 0;
             counter += 1;
             do {
                 temp += 1;
@@ -118,7 +114,7 @@ public class CyclesTheme {
         } while (counter < 3);
         counter = 2;
         do {
-            temp = 0;
+            int temp = 0;
             do {
                 temp += 1;
                 System.out.print(symbol);
@@ -140,9 +136,9 @@ public class CyclesTheme {
 
         System.out.println("\n8) Проверка, является ли число палиндромом: ");
         number = 9233129;
-        temp = number;
+        int temp = number;
         int reverseNumber = 0;
-        while (temp != 0) {
+        while (temp > 0) {
             reverseNumber = reverseNumber * 10 + temp % 10;
             temp /= 10;
         }
