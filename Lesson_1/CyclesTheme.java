@@ -1,19 +1,19 @@
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("1) Подсчет суммы четных и нечетных чисел:");
-        int evenSum = 0;
-        int oddSum = 0;
-        int pointer = -10;
+        int sumEven = 0;
+        int sumOdd = 0;
+        int counter = -10;
         do {
-            if (pointer % 2 == 0) {
-                evenSum += pointer;
+            if (counter % 2 == 0) {
+                sumEven += counter;
             } else {
-                oddSum += pointer;
+                sumOdd += counter;
             }
-            pointer += 1;
-        } while (pointer <= 21);
-        System.out.println("\tВ промежутке [-10; 21] сумма четных чисел = " + evenSum +
-                ", а нечетных = " + oddSum);
+            counter++;
+        } while (counter <= 21);
+        System.out.println("\tВ промежутке [-10; 21] сумма четных чисел = " + sumEven +
+                ", а нечетных = " + sumOdd);
 
         System.out.println("\n2) Вывод чисел в интервале (min и max) в порядке убывания: ");
         int num1 = 10;
@@ -33,7 +33,7 @@ public class CyclesTheme {
         if (num3 > max) {
             max = num3;
         }
-        for (int i = max; i > min; i--) {
+        for (int i = max - 1; i > min; i--) {
             System.out.print(i + " ");
         }
 
@@ -68,7 +68,7 @@ public class CyclesTheme {
 
         System.out.println("\n\n5) Проверка количества двоек на четность/нечетность: ");
         number = 3242592;
-        int counter = 0;
+        counter = 0;
         int temp = number;
         while (temp != 0) {
             if (temp % 10 == 2) {
