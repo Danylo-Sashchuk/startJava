@@ -126,12 +126,10 @@ public class CyclesTheme {
         System.out.println("\n7) Отображение ASCII-символов: ");
         System.out.printf("\t%S%5S\n", "DEC", "CHAR");
         for (int i = 33; i < 48; i += 2) {
-            char curSymbol = (char)i;
-            System.out.printf("\t%3d%5s\n", i, curSymbol);
+            System.out.printf("\t%3d%5c\n", i, i);
         }
         for (int i = 98; i < 123; i += 2) {
-            char curSymbol = (char)i;
-            System.out.printf("\t%3d%5s\n", i, curSymbol);
+            System.out.printf("\t%3d%5c\n", i, i);
         }
 
         System.out.println("\n8) Проверка, является ли число палиндромом: ");
