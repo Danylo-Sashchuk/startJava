@@ -147,24 +147,23 @@ public class CyclesTheme {
         }
 
         System.out.println("\n9) Определение, является ли число счастливым");
-        number = 300111;
+        number = 900333;
         int sum1 = 0;
         int sum2 = 0;
-        System.out.print("\tСумма цифр ");
+        int firstHalf = number / 1000;
+        int secondHalf = number % 1000;
+        int firstHalfCopy = firstHalf;
+        int secondHalfCopy = secondHalf;
         for (int i = 0; i < 3; i++) {
-            int digit = number % 10;
-            System.out.print(digit);
+            int digit = firstHalf % 10;
             sum1 += digit;
-            number /= 10;
-        }
-        System.out.print(" = " + sum1 + "\n\tСумма цифр ");
-        for (int i = 0; i < 3; i++) {
-            int digit = number % 10;
-            System.out.print(digit);
+            firstHalf /= 10;
+            digit = secondHalf % 10;
             sum2 += digit;
-            number /= 10;
+            secondHalf /= 10;
         }
-        System.out.println(" = " + sum2);
+        System.out.printf("\tСумма цифр %d = %d\n\tСумма цифр %d = %d\n", firstHalfCopy, sum1,
+                secondHalfCopy, sum2);
         if (sum1 == sum2) {
             System.out.println("\tЧисло является счастливым.");
         } else {
