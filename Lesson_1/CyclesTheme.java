@@ -83,45 +83,44 @@ public class CyclesTheme {
         }
 
         System.out.println("\n6) Отображение фигур в консоли: ");
-        char symbol = '*';
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 10; j++) {
-                System.out.print(symbol);
+                System.out.print('*');
             }
             System.out.println();
         }
-        symbol = '#';
-        counter = 5;
-        while (counter > 0) {
-            int temp = counter;
-            while (temp > 0) {
-                System.out.print(symbol);
-                temp--;
+        System.out.println();
+        int lineNumber = 5;
+        while (lineNumber > 0) {
+            int symbolsInLine = lineNumber;
+            while (symbolsInLine > 0) {
+                System.out.print('#');
+                symbolsInLine--;
             }
             System.out.println();
-            counter--;
+            lineNumber--;
         }
-        symbol = '$';
-        counter = 0;
+        System.out.println();
+        int currentLine = 0;
+        int needSymbolsInLine = 1;
+        boolean isIncreasingOrder = true;
         do {
-            int temp = 0;
-            counter++;
+            int currentSymbol = 0;
             do {
-                temp++;
-                System.out.print(symbol);
-            } while (temp < counter);
+                System.out.print('$');
+                currentSymbol++;
+            } while (currentSymbol < needSymbolsInLine);
             System.out.println();
-        } while (counter < 3);
-        counter = 2;
-        do {
-            int temp = 0;
-            do {
-                temp++;
-                System.out.print(symbol);
-            } while (temp < counter);
-            counter--;
-            System.out.println();
-        } while (counter > 0);
+            currentLine++;
+            if (needSymbolsInLine == 3) {
+                isIncreasingOrder = false;
+            }
+            if (!isIncreasingOrder) {
+                needSymbolsInLine--;
+            } else {
+                needSymbolsInLine++;
+            }
+        } while (currentLine < 5);
 
         System.out.println("\n7) Отображение ASCII-символов: ");
         System.out.printf("\t%S%5S\n", "DEC", "CHAR");
