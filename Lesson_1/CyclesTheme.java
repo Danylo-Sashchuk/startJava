@@ -89,6 +89,7 @@ public class CyclesTheme {
             }
             System.out.println();
         }
+        
         System.out.println();
         int lineNumber = 5;
         while (lineNumber > 0) {
@@ -101,6 +102,7 @@ public class CyclesTheme {
             lineNumber--;
         }
         System.out.println();
+
         int currentLine = 0;
         int needSymbolsInLine = 1;
         boolean isIncreasingOrder = true;
