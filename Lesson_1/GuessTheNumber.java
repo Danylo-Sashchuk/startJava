@@ -10,9 +10,6 @@ public class GuessTheNumber {
                 System.out.printf("Число %d больше того, что загадал компьютер.\n", playerNumber);
                 playerNumber--;
             }
-            if (playerNumber > 100) {
-                playerNumber = 1;
-            }
         }
         System.out.printf("\tВы победили! Компьютер загадал число %d!\n", tagretNum);
     }
