@@ -1,18 +1,19 @@
 public class GuessTheNumber {
     public static void main(String[] args) {
-        int computersNumber = 25;
-        int playersNumber = 78;
-        while (playersNumber != computersNumber) {
-            if (playersNumber < computersNumber) {
-                System.out.printf("Число %d меньше того, что загадал компьютер.\n", playersNumber);
+        int tagretNum = 69;
+        int playerNumber = 50;
+        while (playerNumber != tagretNum) {
+            if (playerNumber < tagretNum) {
+                System.out.printf("Число %d меньше того, что загадал компьютер.\n", playerNumber);
+                playerNumber++;
             } else {
-                System.out.printf("Число %d больше того, что загадал компьютер.\n", playersNumber);
+                System.out.printf("Число %d больше того, что загадал компьютер.\n", playerNumber);
+                playerNumber--;
             }
-            playersNumber++;
-            if (playersNumber > 100) {
-                playersNumber -= 100;
+            if (playerNumber > 100) {
+                playerNumber = 1;
             }
         }
-        System.out.printf("\tВы победили! Компьютер загадал число %d!\n", computersNumber);
+        System.out.printf("\tВы победили! Компьютер загадал число %d!\n", tagretNum);
     }
 }
