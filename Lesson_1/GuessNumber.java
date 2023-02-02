@@ -1,9 +1,9 @@
 public class GuessNumber {
     public static void main(String[] args) {
-        int tagretNum = 69;
+        int tagretNumber = 69;
         int playerNumber = 50;
-        while (playerNumber != tagretNum) {
-            if (playerNumber < tagretNum) {
+        while (playerNumber != tagretNumber) {
+            if (playerNumber < tagretNumber) {
                 System.out.printf("Число %d меньше того, что загадал компьютер.\n", playerNumber);
                 playerNumber++;
             } else {
@@ -11,6 +11,6 @@ public class GuessNumber {
                 playerNumber--;
             }
         }
-        System.out.printf("\tВы победили! Компьютер загадал число %d!\n", tagretNum);
+        System.out.printf("\tВы победили! Компьютер загадал число %d!\n", tagretNumber);
     }
 }
