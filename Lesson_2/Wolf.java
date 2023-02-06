@@ -51,22 +51,22 @@ public class Wolf {
     }
 
     public void walk() {
-        System.out.printf("%s идет.\n", name);
+        System.out.println(name + "  идет.");
     }
 
     public void sit() {
-        System.out.printf("%s сидит.\n", name);
+        System.out.println(name + "  сидит.");
     }
 
     public void run() {
-        System.out.printf("%s бежит.\n", name);
+        System.out.println(name + "  бежит.");
     }
 
     public void howl() {
-        System.out.printf("%s воет.\n", name);
+        System.out.println(name + "  воет.");
     }
 
     public void hunter() {
-        System.out.printf("%s охотиться.\n", name);
+        System.out.println(name + "  охотиться.");
     }
 }

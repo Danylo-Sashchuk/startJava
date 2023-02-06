@@ -6,9 +6,9 @@ public class WolfTest {
         myWolf.setColor("Серый");
         myWolf.setWeight(50);
         myWolf.setAge(5);
-        System.out.printf("Вы видете перед собой %s - это %s %s, которому " + 
-                "%d лет и весит он %2.2f кг.\n", myWolf.getName(), myWolf.getColor(), 
-                myWolf.getSex(), myWolf.getAge(), myWolf.getWeight());
+        System.out.println("Вы видете перед собой " + myWolf.getName() + " - это " + 
+                myWolf.getColor() + " " + myWolf.getSex() + ", которому " + myWolf.getAge() + 
+                " лет и весит он " + myWolf.getWeight() + " кг.");
         myWolf.walk();
         myWolf.sit();
         myWolf.run();
