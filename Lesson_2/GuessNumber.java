@@ -13,35 +13,28 @@ public class GuessNumber {
     }
 
     public Player startGame() {
-        targetNumber = generateTargetNumber();
+        targetNumber = generateRandomNumber();
         while(true) {
-            if (playerTurn(firstPlayer)) {
+            int firstPlayerNumber = playerTurn(firstPlayer);
+            if (isGuessed(firstPlayerNumber)) {
                 return firstPlayer;
             }
-            if (playerTurn(secondPlayer)) {
+            int secondPlayerNumber = playerTurn(secondPlayer);
+            if (isGuessed(secondPlayerNumber)) {
                 return secondPlayer;
             }
         }
     }
 
-    private int generateTargetNumber() {
+    private int generateRandomNumber() {
         Random rand = new Random();
         int randomNumber = rand.nextInt(100) + 1; 
         return randomNumber;
     }
 
-    private boolean playerTurn(Player player) {
-        System.out.print(player.getName() + ", введите число: ");
-        int number = scanNumber();
-        if (isGuessed(number)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private int scanNumber() {
+    private int playerTurn(Player player) {
         Scanner scan = new Scanner(System.in);
+        System.out.print(player.getName() + ", введите число: ");
         int number = scan.nextInt();
         return number;
     }
