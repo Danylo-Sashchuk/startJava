@@ -4,16 +4,16 @@ public class Calculator {
     private int num2;
     private char sign;
 
-    public void setNum1(int num1) {
-        this.num1 = num1;
+    public void setNum1(int num) {
+        num1 = num;
     }
 
     public int getNum1() {
         return num1;
     }
 
-    public void setNum2(int num2) {
-        this.num2 = num2;
+    public void setNum2(int num) {
+        num2 = num;
     }
 
     public int getNum2() {
@@ -50,7 +50,6 @@ public class Calculator {
                 for (int i = 0; i < num2; i++) {
                     result *= num1;
                 }
-                break;
         }
         System.out.println("Ответ: " + result);
     }

@@ -2,11 +2,15 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
-        calc.setNum1(scanNum());
-        calc.setSign(scanSign());
-        calc.setNum2(scanNum());
-        calc.calculate();
+        do {
+            Calculator calculator = new Calculator();
+            calculator.setNum1(scanNum());
+            calculator.setSign(scanSign());
+            calculator.setNum2(scanNum());
+            calculator.calculate();
+        }
+        while (startOver());
+        System.out.println("До свидания!");
     }
 
     private static int scanNum() {
@@ -21,5 +25,16 @@ public class CalculatorTest {
         System.out.print("Введите знак математической операции: ");
         char userSign = scan.nextLine().charAt(0);
         return userSign;
+    }
+
+    private static boolean startOver() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Хотите продолжить вычисления? [y/n]:");
+        char answer = scan.nextLine().charAt(0);
+        if (answer == 'y') {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
