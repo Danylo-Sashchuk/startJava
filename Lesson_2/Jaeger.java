@@ -10,6 +10,23 @@ public class Jaeger {
     private int strength;
     private int armor;
 
+    public Jaeger() {
+
+    }
+
+    public Jaeger(String modelName, String mark, String origin, String operatingSystem, 
+            String energyCore, boolean active, int speed, int strength, int armor) {
+        this.modelName = modelName;
+        this.mark = mark;
+        this.origin = origin;
+        this.operatingSystem = operatingSystem;
+        this.energyCore = energyCore;
+        this.active = active;
+        this.speed = speed;
+        this.strength = strength;
+        this.armor = armor;
+    }
+
     public String getModelName() {
         return modelName;
     }
@@ -92,22 +109,5 @@ public class Jaeger {
 
     public void weakenArmor(int deduction) {
         setArmor(getArmor() - deduction);
-    }
-
-    public Jaeger() {
-        
-    }
-
-    public Jaeger(String modelName, String mark, String origin, String operatingSystem, 
-            String energyCore, boolean active, int speed, int strength, int armor) {
-        this.modelName = modelName;
-        this.mark = mark;
-        this.origin = origin;
-        this.operatingSystem = operatingSystem;
-        this.energyCore = energyCore;
-        this.active = active;
-        this.speed = speed;
-        this.strength = strength;
-        this.armor = armor;
     }
 }
