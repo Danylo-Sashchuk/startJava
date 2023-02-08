@@ -10,7 +10,6 @@ public class JaegerTest {
         romero.setSpeed(2);
         romero.setStrength(7);
         romero.setArmor(6);
-
         System.out.println("На патрулирование выходит робот " + romero.getModelName() + " " +
                 romero.getMark() + " производства " + romero.getOrigin() + 
                 "\nУ него на борту операционная система - " + romero.getOperatingSystem() +
@@ -18,10 +17,9 @@ public class JaegerTest {
                 romero.getSpeed() + "; Сила: " + romero.getStrength() + "; Защита: " +
                 romero.getArmor());
 
-        System.out.println("Его атакуют!");
+        System.out.println("О, нет, его атакуют!");
         romero.weakenArmor(5);
-        System.out.println("Робот остался цел, но общая защита стала равна " + romero.getArmor());
-
-        
+        System.out.println("Фух, робот цел, но общая защита снизилась и стала равна " +
+                romero.getArmor());
     }
 }
