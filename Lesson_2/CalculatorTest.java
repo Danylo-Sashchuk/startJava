@@ -28,13 +28,15 @@ public class CalculatorTest {
     }
 
     private static boolean startOver() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Хотите продолжить вычисления? [y/n]:");
-        char answer = scan.nextLine().charAt(0);
-        if (answer == 'y') {
-            return true;
-        } else {
-            return false;
+        while (true) {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Хотите продолжить вычисления? [y/n]:");
+            char answer = scan.nextLine().charAt(0);
+            if (answer == 'y') {
+                return true;
+            } else if (answer == 'n') {
+                return false;
+            }
         }
     }
 }
