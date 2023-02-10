@@ -10,9 +10,7 @@ public class Jaeger {
     private int strength;
     private int armor;
 
-    public Jaeger() {
-
-    }
+    public Jaeger() {}
 
     public Jaeger(String modelName, String mark, String origin, String operatingSystem, 
             String energyCore, boolean active, int speed, int strength, int armor) {

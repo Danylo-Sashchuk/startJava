@@ -3,25 +3,27 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private Player firstPlayer;
-    private Player secondPlayer;
+    private Player player1;
+    private Player player2;
     private int targetNumber;
 
-    public GuessNumber(Player firstPlayer, Player secondPlayer) {
-        this.firstPlayer = firstPlayer;
-        this.secondPlayer = secondPlayer;
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
-    public Player startGame() {
+    public void startGame() {
         targetNumber = generateRandomNumber();
         while(true) {
-            int firstPlayerNumber = playerTurn(firstPlayer);
-            if (isGuessed(firstPlayerNumber)) {
-                return firstPlayer;
+            int player1Number = playerTurn(player1);
+            if (isGuessed(player1Number)) {
+                System.out.println("Поздравляем! " + player1.getName() + ", вы угадали число!");
+                return;
             }
-            int secondPlayerNumber = playerTurn(secondPlayer);
-            if (isGuessed(secondPlayerNumber)) {
-                return secondPlayer;
+            int player2Number = playerTurn(player2);
+            if (isGuessed(player2Number)) {
+                System.out.println("Поздравляем! " + player2.getName() + ", вы угадали число!");
+                return;
             }
         }
     }

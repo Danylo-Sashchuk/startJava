@@ -1,28 +1,29 @@
 import java.util.Scanner;
 
 public class GuessNumberTest {
+
+    private static Scanner scan;
+
     public static void main(String[] args) {
+        scan = new Scanner(System.in);
         System.out.print("\tПриветствую!\nПервый игрок, введите свое имя: ");
-        Player firstPlayer = new Player(scanName());
+        Player player1 = new Player(inputName());
         System.out.print("Второй игрок, теперь вы: ");
-        Player secondPlayer = new Player(scanName());
-        GuessNumber guessGame = new GuessNumber(firstPlayer, secondPlayer);
+        Player player2 = new Player(inputName());
+        GuessNumber guessGame = new GuessNumber(player1, player2);
         do {
-            Player winner = guessGame.startGame();
-            System.out.println("Поздравляем! " + winner.getName() + ", вы угадали число!");
+            guessGame.startGame();
         } while (startOver());
         System.out.println("Хорошего дня!");
     }
 
-    private static String scanName() {
-        Scanner scan = new Scanner(System.in);
+    private static String inputName() {
         String name = scan.nextLine();
         return name;
     }
 
     private static boolean startOver() {
         while (true) {
-            Scanner scan = new Scanner(System.in);
             System.out.println("Хотите продолжить игру? [y/n]:");
             char answer = scan.nextLine().charAt(0);
             if (answer == 'y') {
