@@ -12,38 +12,38 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public void startGame() {
-        targetNumber = generateRandomNumber();
+    public void start() {
+        generateTargetNumber();
         while(true) {
-            int player1Number = playerTurn(player1);
-            if (isGuessed(player1Number)) {
+            int playerNumber = inputNumber(player1);
+            if (isGuessed(playerNumber)) {
                 System.out.println("Поздравляем! " + player1.getName() + ", вы угадали число!");
                 return;
             }
-            int player2Number = playerTurn(player2);
-            if (isGuessed(player2Number)) {
+            playerNumber = inputNumber(player2);
+            if (isGuessed(playerNumber)) {
                 System.out.println("Поздравляем! " + player2.getName() + ", вы угадали число!");
                 return;
             }
         }
     }
 
-    private int generateRandomNumber() {
+    private void generateTargetNumber() {
         Random rand = new Random();
-        return (rand.nextInt(100) + 1);
+        targetNumber = rand.nextInt(100) + 1;
     }
 
-    private int playerTurn(Player player) {
+    private int inputNumber(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
         return scan.nextInt();
     }
 
-    private boolean isGuessed(int number) {
-        if (number < targetNumber) {
-            System.out.println("Число " + number + " меньше того, что загадал компьютер.");
-        } else if (number > targetNumber) {
-            System.out.println("Число " + number + " больше того, что загадал компьютер.");
+    private boolean isGuessed(int playerNumber) {
+        if (playerNumber < targetNumber) {
+            System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер.");
+        } else if (playerNumber > targetNumber) {
+            System.out.println("Число " + playerNumber + " больше того, что загадал компьютер.");
         } else {
             return true;
         }
