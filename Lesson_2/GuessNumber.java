@@ -30,15 +30,13 @@ public class GuessNumber {
 
     private int generateRandomNumber() {
         Random rand = new Random();
-        int randomNumber = rand.nextInt(100) + 1; 
-        return randomNumber;
+        return (rand.nextInt(100) + 1);
     }
 
     private int playerTurn(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
-        int number = scan.nextInt();
-        return number;
+        return scan.nextInt();
     }
 
     private boolean isGuessed(int number) {

@@ -10,7 +10,7 @@ public class JaegerTest {
         romero.setSpeed(2);
         romero.setStrength(7);
         romero.setArmor(6);
-        printJaegerIndo(romero);
+        printJaegerInfo(romero);
         System.out.println("О, нет, его атакуют!");
         romero.weakenArmor(5);
         System.out.println("Робот одолел монстра, но общая защита снизилась и стала равна " +
@@ -18,13 +18,13 @@ public class JaegerTest {
 
         Jaeger eureka = new Jaeger("Striker Eureka", "Mark-5", "Australia", "Arbiter Tac-Conn 12",
                 "XIG Supercell Chamber", true, 10, 10, 9);
-        printJaegerIndo(eureka);
+        printJaegerInfo(eureka);
         System.out.println("Робот входит в бой.");
         eureka.die();
         System.out.println("Есть ли связь с пилотами? " + eureka.isActive());
     }
 
-    public static void printJaegerIndo(Jaeger robot) {
+    public static void printJaegerInfo(Jaeger robot) {
         System.out.println("\nНа патрулирование выходит робот " + robot.getModelName() + " " +
                 robot.getMark() + " производства " + robot.getOrigin() + 
                 "\nУ него на борту операционная система - " + robot.getOperatingSystem() +

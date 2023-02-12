@@ -7,28 +7,24 @@ public class GuessNumberTest {
     public static void main(String[] args) {
         scan = new Scanner(System.in);
         System.out.print("\tПриветствую!\nПервый игрок, введите свое имя: ");
-        Player player1 = new Player(inputName());
+        Player player1 = new Player(scan.nextLine());
         System.out.print("Второй игрок, теперь вы: ");
-        Player player2 = new Player(inputName());
+        Player player2 = new Player(scan.nextLine());
         GuessNumber guessGame = new GuessNumber(player1, player2);
         do {
             guessGame.startGame();
-        } while (startOver());
+        } while (isNext());
         System.out.println("Хорошего дня!");
     }
 
-    private static String inputName() {
-        String name = scan.nextLine();
-        return name;
-    }
-
-    private static boolean startOver() {
+    private static boolean isNext() {
         while (true) {
             System.out.println("Хотите продолжить игру? [y/n]:");
             char answer = scan.nextLine().charAt(0);
             if (answer == 'y') {
                 return true;
-            } else if (answer == 'n') {
+            }
+            if (answer == 'n') {
                 return false;
             }
         }
