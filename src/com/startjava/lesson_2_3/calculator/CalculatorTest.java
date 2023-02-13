@@ -1,4 +1,7 @@
+package com.startjava.lesson_2_3.calculator;
+
 import java.util.Scanner;
+import com.startjava.lesson_2_3.calculator.Calculator;
 
 public class CalculatorTest {
     public static void main(String[] args) {
