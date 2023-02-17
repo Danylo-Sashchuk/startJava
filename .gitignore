@@ -4,6 +4,8 @@ out/
 # Folder settings
 .DS_Store
 
-# Argument files
-options
-optionsj
+/.idea/modules.xml
+/.idea/vcs.xml
+/StartJava.iml
+/.idea/misc.xml
+/.idea/workspace.xml
