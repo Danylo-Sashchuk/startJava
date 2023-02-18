@@ -55,7 +55,7 @@ public class ArrayTheme {
         }
         System.out.println("\nКоличество обнуленных ячеек = " + zeroedCounter);
 
-        System.out.println("\nВывод элементов массива лесенкой в обратном порядке: ");
+        System.out.println("\n4)Вывод элементов массива лесенкой в обратном порядке: ");
         char[] capitalLetters = new char[26];
         for (int i = 0, j = 65; i < capitalLetters.length; i++, j++) {
             capitalLetters[i] = (char) j;
@@ -67,7 +67,7 @@ public class ArrayTheme {
             System.out.println();
         }
 
-        System.out.println("5) Генерация уникальных чисел");
+        System.out.println("\n5) Генерация уникальных чисел");
         intArray = new int[30];
         for (int i = 0; i < intArray.length; i++) {
             int randomNumber;
@@ -84,11 +84,34 @@ public class ArrayTheme {
             System.out.print(intArray[i] + " ");
         }
 
-
+        System.out.println("\n\n6) Сдвиг элементов массива: ");
+        String[] firstArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        int nonEmptyCounter = 0;
+        for (String s : firstArray) {
+            if (!s.isBlank()) {
+                nonEmptyCounter++;
+            }
+        }
+        String[] secondArray = new String[nonEmptyCounter];
+        for (int i = 0, j = 0; i < firstArray.length; i++) {
+            int nextEmptyString = findNextEmptyString(firstArray, i);
+            int copyLength = nextEmptyString - i;
+            System.arraycopy(firstArray, i, secondArray, j, copyLength);
+            j += copyLength;
+            i = nextEmptyString;
+        }
+        System.out.println("Исходный массив: ");
+        for (String s : firstArray) {
+            System.out.print(s + " ");
+        }
+        System.out.println("\nМассив без пустых строк: ");
+        for (String s : secondArray) {
+            System.out.print(s + " ");
+        }
     }
 
     private static void printIntArray(int[] array) {
-        for (Object item : array) {
+        for (int item : array) {
             System.out.print(item + " ");
         }
     }
@@ -112,5 +135,14 @@ public class ArrayTheme {
                 }
             }
         }
+    }
+
+    private static int findNextEmptyString(String[] array, int start) {
+        for (int i = start; i < array.length; i++) {
+            if (array[i].isBlank()) {
+                return i;
+            }
+        }
+        return array.length - 1;
     }
 }
