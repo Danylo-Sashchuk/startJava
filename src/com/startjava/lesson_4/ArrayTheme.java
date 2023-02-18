@@ -76,9 +76,15 @@ public class ArrayTheme {
             } while (isExist(intArray, randomNumber));
             intArray[i] = randomNumber;
         }
+        sort(intArray);
         for (int i = 0; i < intArray.length; i++) {
-            System.out.print(intArray[i] + ", ");
+            if (i % 10 == 0 && i != 0) {
+                System.out.println();
+            }
+            System.out.print(intArray[i] + " ");
         }
+
+
     }
 
     private static void printIntArray(int[] array) {
@@ -94,5 +100,17 @@ public class ArrayTheme {
             }
         }
         return false;
+    }
+
+    private static void sort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
     }
 }
