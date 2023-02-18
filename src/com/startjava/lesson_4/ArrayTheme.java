@@ -21,27 +21,16 @@ public class ArrayTheme {
         for (int i = 0; i < intArray.length; i++) {
             intArray[i] = rand.nextInt(10);
         }
-        int[] zerosAndNines = new int[intArray.length];
-        int result = 1;
+        String zerosAndNines = "";
+        String resultStatement = "";
+        int multiplicationResult = 1;
         for (int i = 0; i < intArray.length; i++) {
-            if (intArray[i] == 0 || intArray[i] == 9) {
-                zerosAndNines[i] = intArray[i];
-                continue;
-            }
-            zerosAndNines[i] = -1;
-            result *= intArray[i];
-            if (i == intArray.length - 1) {
-                System.out.println(intArray[i] + " = " + result);
-                continue;
-            }
-            System.out.print(intArray[i] + " * ");
+            resultStatement += intArray[i] == 0 || intArray[i] == 9 ? "" : " * " + intArray[i];
+            zerosAndNines += intArray[i] == 0 || intArray[i] == 9 ? intArray[i] + " под индексом " + i + "; " : "";
+            multiplicationResult *= intArray[i] == 0 || intArray[i] == 9 ? 1 : intArray[i];
         }
-        System.out.println("В массиве находятся: ");
-        for (int i = 0; i < zerosAndNines.length; i++) {
-            if (zerosAndNines[i] != -1) {
-                System.out.println(zerosAndNines[i] + " под индексом " + i);
-            }
-        }
+        System.out.println(resultStatement + " = " + multiplicationResult);
+        System.out.println("В массиве находятся: " + zerosAndNines);
     }
 
     private static void printIntArray(int[] array) {
