@@ -16,7 +16,6 @@ public class ArrayTheme {
         }
         System.out.print("\nМассив после модификации: ");
         printIntArray(intArray);
-        System.out.println();
 
         System.out.println("\n\n2) Вывод произведения элементов массива: ");
         intArray = new int[]{0, 8, 5, 5, 0, 9, 4, 1, 0, 0, 0};
@@ -66,11 +65,12 @@ public class ArrayTheme {
 
         System.out.println("\n4)Вывод элементов массива лесенкой в обратном порядке: ");
         char[] capitalLetters = new char[26];
-        for (int i = 0, j = 65; i < capitalLetters.length; i++, j++) {
+        len = capitalLetters.length;
+        for (int i = 0, j = 65; i < len; i++, j++) {
             capitalLetters[i] = (char) j;
         }
-        for (int i = capitalLetters.length - 1; i > -1; i--) {
-            for (int j = capitalLetters.length - 1; j >= i; j--) {
+        for (int i = len - 1; i > -1; i--) {
+            for (int j = len - 1; j >= i; j--) {
                 System.out.print(capitalLetters[j]);
             }
             System.out.println();
@@ -110,13 +110,9 @@ public class ArrayTheme {
             i = nextEmptyString;
         }
         System.out.println("Исходный массив: ");
-        for (String s : firstArray) {
-            System.out.print(s + " ");
-        }
+        printStringArray(firstArray);
         System.out.println("\nМассив без пустых строк: ");
-        for (String s : secondArray) {
-            System.out.print(s + " ");
-        }
+        printStringArray(secondArray);
     }
 
     private static void printIntArray(int[] array) {
@@ -163,5 +159,11 @@ public class ArrayTheme {
             }
         }
         return array.length - 1;
+    }
+
+    private static void printStringArray(String[] array) {
+        for (String s : array) {
+            System.out.print(s + " ");
+        }
     }
 }
