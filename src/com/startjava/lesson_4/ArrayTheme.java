@@ -6,39 +6,53 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("1) Реверс значений массива: ");
         int[] intArray = {2, 1, 7, 3, 6, 4, 5};
+        int len = intArray.length - 1;
         System.out.print("Массив до модификации: ");
         printIntArray(intArray);
-        for (int i = 0, j = intArray.length - 1; i < j; i++, j--) {
+        for (int i = 0; i < len; i++, len--) {
             int temp = intArray[i];
-            intArray[i] = intArray[j];
-            intArray[j] = temp;
+            intArray[i] = intArray[len];
+            intArray[len] = temp;
         }
         System.out.print("\nМассив после модификации: ");
         printIntArray(intArray);
+        System.out.println();
 
         System.out.println("\n\n2) Вывод произведения элементов массива: ");
-        Random rand = new Random();
-        for (int i = 0; i < intArray.length; i++) {
-            intArray[i] = rand.nextInt(10);
-        }
-        String zerosAndNines = "";
-        String resultStatement = "";
+        intArray = new int[]{0, 8, 5, 5, 0, 9, 4, 1, 0, 0, 0};
+        len = intArray.length;
+        String[] zeroesAndNines = new String[len];
+        int zeroesAndNinesLen = 0;
+        int[] resultArray = new int[len];
+        int resultArrayCount = 0;
         int multiplicationResult = 1;
-        for (int i = 0; i < intArray.length; i++) {
-            resultStatement += intArray[i] == 0 || intArray[i] == 9 ? "" : " * " + intArray[i];
-            zerosAndNines += intArray[i] == 0 || intArray[i] == 9 ? intArray[i] + " под индексом " + i + "; " : "";
-            multiplicationResult *= intArray[i] == 0 || intArray[i] == 9 ? 1 : intArray[i];
+        for (int i = 0; i < len - 1; i++) {
+            if (intArray[i] != 0 && intArray[i] != 9) {
+                multiplicationResult *= intArray[i];
+                resultArray[resultArrayCount++] = intArray[i];
+            } else {
+                zeroesAndNines[zeroesAndNinesLen++] = "Число " + intArray[i] + " под индексом " + i + "; ";
+            }
         }
-        System.out.println(resultStatement + " = " + multiplicationResult);
-        System.out.println("В массиве находятся: " + zerosAndNines);
+        for (int i = 0; i < resultArrayCount - 1; i++) {
+            System.out.print(resultArray[i] + " * ");
+        }
+        System.out.print(resultArray[resultArrayCount - 1]);
+        System.out.println(" = " + multiplicationResult);
+        System.out.println("Нули и единицы: ");
+        for (int i = 0; i < zeroesAndNinesLen; i++) {
+            System.out.print(zeroesAndNines[i]);
+        }
 
         System.out.println("\n3) Удаление элементов массива: ");
+        Random rand = new Random();
         double[] doubleArray = new double[15];
         for (int i = 0; i < doubleArray.length; i++) {
             doubleArray[i] = rand.nextDouble();
         }
-        int midIndex = doubleArray.length / 2;
-        double targetNumber = doubleArray[midIndex];
+        System.out.println("Исходный массив: ");
+        printFormattedDoubleArray(doubleArray);
+        double targetNumber = doubleArray[doubleArray.length / 2];
         int zeroedCounter = 0;
         for (int i = 0; i < doubleArray.length; i++) {
             if (doubleArray[i] > targetNumber) {
@@ -46,13 +60,8 @@ public class ArrayTheme {
                 zeroedCounter++;
             }
         }
-        for (int i = 0; i < 8; i++) {
-            System.out.printf("%1.3f ", doubleArray[i]);
-        }
-        System.out.println();
-        for (int i = 8; i < 15; i++) {
-            System.out.printf("%-1.3f ", doubleArray[i]);
-        }
+        System.out.println("\nИзмененный массив: ");
+        printFormattedDoubleArray(doubleArray);
         System.out.println("\nКоличество обнуленных ячеек = " + zeroedCounter);
 
         System.out.println("\n4)Вывод элементов массива лесенкой в обратном порядке: ");
@@ -113,6 +122,16 @@ public class ArrayTheme {
     private static void printIntArray(int[] array) {
         for (int item : array) {
             System.out.print(item + " ");
+        }
+    }
+
+    private static void printFormattedDoubleArray(double[] array) {
+        for (int i = 0; i < 8; i++) {
+            System.out.printf("%1.3f ", array[i]);
+        }
+        System.out.println();
+        for (int i = 8; i < 15; i++) {
+            System.out.printf("%1.3f ", array[i]);
         }
     }
 
