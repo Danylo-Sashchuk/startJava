@@ -18,29 +18,15 @@ public class ArrayTheme {
         printIntArray(intArray);
 
         System.out.println("\n\n2) Вывод произведения элементов массива: ");
-        intArray = new int[]{0, 8, 5, 5, 0, 9, 4, 1, 0, 0, 0};
+        intArray = new int[10];
         len = intArray.length;
-        String[] zeroesAndNines = new String[len];
-        int zeroesAndNinesLen = 0;
-        int[] resultArray = new int[len];
-        int resultArrayCount = 0;
         int multiplicationResult = 1;
-        for (int i = 0; i < len - 1; i++) {
-            if (intArray[i] != 0 && intArray[i] != 9) {
-                multiplicationResult *= intArray[i];
-                resultArray[resultArrayCount++] = intArray[i];
-            } else {
-                zeroesAndNines[zeroesAndNinesLen++] = "Число " + intArray[i] + " под индексом " + i + "; ";
-            }
+        for (int i = 0; i < len; i++) {
+            intArray[i] = i;
         }
-        for (int i = 0; i < resultArrayCount - 1; i++) {
-            System.out.print(resultArray[i] + " * ");
-        }
-        System.out.print(resultArray[resultArrayCount - 1]);
-        System.out.println(" = " + multiplicationResult);
-        System.out.println("Нули и единицы: ");
-        for (int i = 0; i < zeroesAndNinesLen; i++) {
-            System.out.print(zeroesAndNines[i]);
+        for (int i = 1; i < len - 1; i++) {
+            multiplicationResult *= i;
+            System.out.print((i < 8 ? i + " * " : i + " = " + multiplicationResult));
         }
 
         System.out.println("\n3) Удаление элементов массива: ");
@@ -103,11 +89,11 @@ public class ArrayTheme {
         }
         String[] destStrings = new String[countNotBlank];
         for (int i = 0, j = 0; i < srcStrings.length; i++) {
-            int nextEmptyString = findNextEmptyString(srcStrings, i);
-            int copyLength = nextEmptyString - i;
+            int nextBlankString = findNextBlankString(srcStrings, i);
+            int copyLength = nextBlankString - i;
             System.arraycopy(srcStrings, i, destStrings, j, copyLength);
             j += copyLength;
-            i = nextEmptyString;
+            i = nextBlankString;
         }
         System.out.println("Исходный массив: ");
         printStringArray(srcStrings);
@@ -151,7 +137,7 @@ public class ArrayTheme {
         }
     }
 
-    private static int findNextEmptyString(String[] array, int start) {
+    private static int findNextBlankString(String[] array, int start) {
         for (int i = start; i < array.length; i++) {
             if (array[i].isBlank()) {
                 return i;
