@@ -64,14 +64,14 @@ public class ArrayTheme {
         System.out.println("\nКоличество обнуленных ячеек = " + zeroedCounter);
 
         System.out.println("\n4)Вывод элементов массива лесенкой в обратном порядке: ");
-        char[] capitalLetters = new char[26];
-        len = capitalLetters.length;
-        for (int i = 0, j = 65; i < len; i++, j++) {
-            capitalLetters[i] = (char) j;
+        char[] alphabet = new char[26];
+        len = alphabet.length;
+        for (int i = 0; i < len; i++) {
+            alphabet[i] = (char) ('A' + i);
         }
         for (int i = len - 1; i > -1; i--) {
             for (int j = len - 1; j >= i; j--) {
-                System.out.print(capitalLetters[j]);
+                System.out.print(alphabet[j]);
             }
             System.out.println();
         }
@@ -94,25 +94,25 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n6) Сдвиг элементов массива: ");
-        String[] firstArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        int nonEmptyCounter = 0;
-        for (String s : firstArray) {
-            if (!s.isBlank()) {
-                nonEmptyCounter++;
+        String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        int countNotBlank = 0;
+        for (String item : srcStrings) {
+            if (!item.isBlank()) {
+                countNotBlank++;
             }
         }
-        String[] secondArray = new String[nonEmptyCounter];
-        for (int i = 0, j = 0; i < firstArray.length; i++) {
-            int nextEmptyString = findNextEmptyString(firstArray, i);
+        String[] destStrings = new String[countNotBlank];
+        for (int i = 0, j = 0; i < srcStrings.length; i++) {
+            int nextEmptyString = findNextEmptyString(srcStrings, i);
             int copyLength = nextEmptyString - i;
-            System.arraycopy(firstArray, i, secondArray, j, copyLength);
+            System.arraycopy(srcStrings, i, destStrings, j, copyLength);
             j += copyLength;
             i = nextEmptyString;
         }
         System.out.println("Исходный массив: ");
-        printStringArray(firstArray);
+        printStringArray(srcStrings);
         System.out.println("\nМассив без пустых строк: ");
-        printStringArray(secondArray);
+        printStringArray(destStrings);
     }
 
     private static void printIntArray(int[] array) {
@@ -122,18 +122,17 @@ public class ArrayTheme {
     }
 
     private static void printFormattedDoubleArray(double[] array) {
-        for (int i = 0; i < 8; i++) {
-            System.out.printf("%1.3f ", array[i]);
-        }
-        System.out.println();
-        for (int i = 8; i < 15; i++) {
+        for (int i = 0; i < array.length; i++) {
+            if (i % 8 == 0 && i != 0) {
+                System.out.println();
+            }
             System.out.printf("%1.3f ", array[i]);
         }
     }
 
     private static boolean isExist(int[] array, int number) {
-        for (int j : array) {
-            if (j == number) {
+        for (int item : array) {
+            if (item == number) {
                 return true;
             }
         }
@@ -162,8 +161,8 @@ public class ArrayTheme {
     }
 
     private static void printStringArray(String[] array) {
-        for (String s : array) {
-            System.out.print(s + " ");
+        for (String item : array) {
+            System.out.print(item + " ");
         }
     }
 }
