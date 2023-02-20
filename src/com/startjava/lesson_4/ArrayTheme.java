@@ -20,26 +20,27 @@ public class ArrayTheme {
         System.out.println("\n\n2) Вывод произведения элементов массива: ");
         intArray = new int[10];
         len = intArray.length;
-        int multiplicationResult = 1;
         for (int i = 0; i < len; i++) {
             intArray[i] = i;
         }
+        int multNumbers = 1;
         for (int i = 1; i < len - 1; i++) {
-            multiplicationResult *= i;
-            System.out.print((i < 8 ? i + " * " : i + " = " + multiplicationResult));
+            multNumbers *= i;
+            System.out.print(i + (i < len - 2 ? " * " : " = " + multNumbers));
         }
 
-        System.out.println("\n3) Удаление элементов массива: ");
+        System.out.println("\n\n3) Удаление элементов массива: ");
         Random rand = new Random();
         double[] doubleArray = new double[15];
-        for (int i = 0; i < doubleArray.length; i++) {
+        len = doubleArray.length;
+        for (int i = 0; i < len; i++) {
             doubleArray[i] = rand.nextDouble();
         }
         System.out.println("Исходный массив: ");
         printFormattedDoubleArray(doubleArray);
-        double targetNumber = doubleArray[doubleArray.length / 2];
+        double targetNumber = doubleArray[len / 2];
         int zeroedCounter = 0;
-        for (int i = 0; i < doubleArray.length; i++) {
+        for (int i = 0; i < len; i++) {
             if (doubleArray[i] > targetNumber) {
                 doubleArray[i] = 0.0;
                 zeroedCounter++;
