@@ -8,19 +8,15 @@ public class CalculatorTest {
     public static void main(String[] args) {
         calc = new Calculator();
         scan = new Scanner(System.in);
-        enterNumbers();
+        startOver();
     }
 
-    private static void enterNumbers() {
-        calc.setExpression(scanExpression());
+    private static void startOver() {
+        System.out.print("Введите математическое выражение: ");
+        calc.setExpression(scan.nextLine());
         double result = calc.calculate();
         print(result);
         isNext();
-    }
-
-    private static String scanExpression() {
-        System.out.print("Введите математическое выражение: ");
-        return scan.nextLine();
     }
 
     private static void print(double result) {
@@ -35,7 +31,7 @@ public class CalculatorTest {
         System.out.println("Хотите продолжить вычисления? [y/n]:");
         char answer = scan.nextLine().charAt(0);
         if (answer == 'y') {
-            enterNumbers();
+            startOver();
         } else if (answer != 'n') {
             isNext();
         }
