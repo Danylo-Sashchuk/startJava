@@ -4,19 +4,24 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     private static Scanner scan;
-    private static Calculator calc;
+
     public static void main(String[] args) {
-        calc = new Calculator();
         scan = new Scanner(System.in);
         startOver();
     }
 
     private static void startOver() {
         System.out.print("Введите математическое выражение: ");
-        calc.setExpression(scan.nextLine());
-        double result = calc.calculate();
-        print(result);
-        isNext();
+        String expression = scan.nextLine();
+        double result;
+        try {
+            result = Calculator.calculate(expression);
+            print(result);
+            isNext();
+        } catch (Exception e) {
+            System.out.println("Введите корректные значения.");
+            startOver();
+        }
     }
 
     private static void print(double result) {
