@@ -3,13 +3,19 @@ package com.startjava.lesson_4;
 import java.util.Scanner;
 
 public class CalculatorTest {
-    static private Scanner scan;
+    private static Scanner scan;
+    private static Calculator calc;
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
+        calc = new Calculator();
         scan = new Scanner(System.in);
+        enterNumbers();
+    }
+
+    private static void enterNumbers() {
         calc.setExpression(scanExpression());
         double result = calc.calculate();
         print(result);
+        isNext();
     }
 
     private static String scanExpression() {
@@ -22,6 +28,16 @@ public class CalculatorTest {
             System.out.println((int) result);
         } else {
             System.out.println(result);
+        }
+    }
+
+    private static void isNext() {
+        System.out.println("Хотите продолжить вычисления? [y/n]:");
+        char answer = scan.nextLine().charAt(0);
+        if (answer == 'y') {
+            enterNumbers();
+        } else if (answer != 'n') {
+            isNext();
         }
     }
 }
