@@ -83,7 +83,7 @@ public class GuessNumber {
     }
 
     private void printCongratulations(Player winner) {
-        System.out.println("Поздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
+        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + (winner.getAttemptsCounter() + 1) + " попытки!");
     }
 

@@ -24,7 +24,7 @@ public class GuessNumberTest {
     }
 
     private static void isNext() {
-        System.out.println("Хотите продолжить игру? [y/n]:");
+        System.out.println("\nХотите продолжить игру? [y/n]:");
         char answer = scan.nextLine().charAt(0);
         if (answer == 'y') {
             startOver();
