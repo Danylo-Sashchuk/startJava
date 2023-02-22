@@ -16,7 +16,7 @@ public class GuessNumber {
 
     public void start() {
         prepareGame();
-        while (true) {
+        while (!areAttemptsLeft(player2)) {
             int playerNumber = inputNumber(player1);
             player1.addNumber(playerNumber);
             if (isGuessed(playerNumber)) {
@@ -34,12 +34,9 @@ public class GuessNumber {
                 return;
             }
             player2.incrementAttemptsCounter();
-            if (!areAttemptsLeft(player2)) {
-                System.out.println("Никто из игроков не угадал число!");
-                printAttempts(player1, player2);
-                return;
-            }
         }
+        System.out.println("Никто из игроков не угадал число!");
+        printAttempts(player1, player2);
     }
 
     private void prepareGame() {
