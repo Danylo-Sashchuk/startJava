@@ -22,7 +22,7 @@ public class Player {
         return Arrays.copyOf(attempts, attemptsCounter);
     }
 
-    public void makeAttempt(int number) {
+    public void addNumber(int number) {
         attempts[attemptsCounter] = number;
     }
 
@@ -32,5 +32,10 @@ public class Player {
 
     public void incrementAttemptsCounter() {
         attemptsCounter++;
+    }
+
+    public void reset() {
+        Arrays.fill(attempts, 0, attemptsCounter, 0);
+        attemptsCounter = 0;
     }
 }

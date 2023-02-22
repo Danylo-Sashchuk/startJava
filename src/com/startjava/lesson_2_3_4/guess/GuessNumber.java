@@ -15,28 +15,37 @@ public class GuessNumber {
     }
 
     public void start() {
-        generateTargetNumber();
+        prepareGame();
         while (true) {
             int playerNumber = inputNumber(player1);
-            player1.makeAttempt(playerNumber);
+            player1.addNumber(playerNumber);
             if (isGuessed(playerNumber)) {
-                printCongratulations(player1, player2);
+                printCongratulations(player1);
+                printAttempts(player1, player2);
                 return;
             }
             player1.incrementAttemptsCounter();
             areAttemptsLeft(player1);
             playerNumber = inputNumber(player2);
-            player2.makeAttempt(playerNumber);
+            player2.addNumber(playerNumber);
             if (isGuessed(playerNumber)) {
-                printCongratulations(player2, player1);
+                printCongratulations(player2);
+                printAttempts(player1, player2);
                 return;
             }
             player2.incrementAttemptsCounter();
             if (!areAttemptsLeft(player2)) {
                 System.out.println("Никто из игроков не угадал число!");
+                printAttempts(player1, player2);
                 return;
             }
         }
+    }
+
+    private void prepareGame() {
+        generateTargetNumber();
+        player1.reset();
+        player2.reset();
     }
 
     private void generateTargetNumber() {
@@ -62,20 +71,23 @@ public class GuessNumber {
         return false;
     }
 
-    private void printAttempts(int[] attempts) {
+    private void printAttempts(Player player1, Player player2) {
+        System.out.println(player1.getName() + ", вот ваши числа:");
+        printArray(player1.getAttempts());
+        System.out.println(player2.getName() + ", а вот ваши:");
+        printArray(player2.getAttempts());
+    }
+
+    private void printArray(int[] attempts) {
         for (int attempt : attempts) {
             System.out.print(attempt + " ");
         }
         System.out.println();
     }
 
-    private void printCongratulations(Player winner, Player loser) {
+    private void printCongratulations(Player winner) {
         System.out.println("Поздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + winner.getAttemptsCounter() + " попытки!");
-        System.out.println("Вот ваши введенные числа: ");
-        printAttempts(winner.getAttempts());
-        System.out.println("А вот числа " + loser.getName() + ": ");
-        printAttempts(loser.getAttempts());
     }
 
     private boolean areAttemptsLeft(Player player) {
