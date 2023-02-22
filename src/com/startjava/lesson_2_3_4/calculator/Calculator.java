@@ -1,4 +1,4 @@
-package com.startjava.lesson_4;
+package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
     private String[] expression;
@@ -11,7 +11,6 @@ public class Calculator {
         int num1 = Integer.parseInt(expression[0]);
         char sign = expression[1].charAt(0);
         int num2 = Integer.parseInt(expression[2]);
-        double result = 1;
         switch (sign) {
             case '+':
                 return Math.addExact(num1, num2);
