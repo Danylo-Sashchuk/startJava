@@ -3,11 +3,12 @@ package com.startjava.lesson_2_3_4.calculator;
 public class Calculator {
     private String[] expression;
 
-    public void setExpression(String expression) {
+    private void setExpression(String expression) {
         this.expression = expression.split(" ");
     }
 
-    public double calculate() {
+    public double calculate(String input) {
+        setExpression(input);
         int num1 = Integer.parseInt(expression[0]);
         char sign = expression[1].charAt(0);
         int num2 = Integer.parseInt(expression[2]);

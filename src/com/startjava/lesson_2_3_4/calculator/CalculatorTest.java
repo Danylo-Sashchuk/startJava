@@ -3,24 +3,18 @@ package com.startjava.lesson_2_3_4.calculator;
 import java.util.Scanner;
 
 public class CalculatorTest {
-    private static Scanner scan;
-    private static Calculator calc;
-    public static void main(String[] args) {
-        calc = new Calculator();
-        scan = new Scanner(System.in);
-        startOver();
-    }
+    private static Scanner scan = new Scanner(System.in);
 
-    private static void startOver() {
+    public static void main(String... args) {
+        Calculator calc = new Calculator();
         System.out.print("Введите математическое выражение: ");
-        calc.setExpression(scan.nextLine());
-        double result = calc.calculate();
+        double result = calc.calculate(scan.nextLine());
         print(result);
         isNext();
     }
 
     private static void print(double result) {
-        if (result - (int) result == 0.0) {
+        if (result % 1 == 0) {
             System.out.println((int) result);
         } else {
             System.out.println(result);
@@ -31,7 +25,7 @@ public class CalculatorTest {
         System.out.println("Хотите продолжить вычисления? [y/n]:");
         char answer = scan.nextLine().charAt(0);
         if (answer == 'y') {
-            startOver();
+            main();
         } else if (answer != 'n') {
             isNext();
         }
