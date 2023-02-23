@@ -7,7 +7,7 @@ public class CalculatorTest {
 
     public static void main(String... args) {
         Calculator calc = new Calculator();
-        System.out.print("Введите математическое выражение: ");
+        System.out.print("Введите математическое выражение: "); //test commit
         double result = calc.calculate(scan.nextLine());
         print(result);
         isNext();
