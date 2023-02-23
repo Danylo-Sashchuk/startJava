@@ -6,11 +6,15 @@ public class CalculatorTest {
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String... args) {
-        Calculator calc = new Calculator();
-        System.out.print("Введите математическое выражение: "); //test commit
-        double result = calc.calculate(scan.nextLine());
-        print(result);
-        isNext();
+        System.out.print("Введите математическое выражение: ");
+        try {
+            double result = Calculator.calculate(scan.nextLine());
+            print(result);
+            isNext();
+        } catch (Exception e) {
+            System.out.println("Введите корректные значения. ");
+            main();
+        }
     }
 
     private static void print(double result) {
