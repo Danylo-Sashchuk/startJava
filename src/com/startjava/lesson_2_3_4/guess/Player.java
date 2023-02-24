@@ -21,14 +21,12 @@ public class Player {
     public int[] getAttempts() {
         return Arrays.copyOf(attempts, attemptsCounter);
     }
-    public void setAttempts(int number) {
-        if (number > 0 && number <= 100) {
-            addNumber(number);
-        }
-    }
 
-    public void addNumber(int number) {
-        attempts[attemptsCounter++] = number;
+    public void setAttempts(int number) {
+        if (number <= 0 || number > 100) {
+            throw new ArithmeticException("Incorrect number");
+        }
+        addNumber(number);
     }
 
     public int getAttemptsCounter() {
@@ -38,5 +36,13 @@ public class Player {
     public void reset() {
         Arrays.fill(attempts, 0, attemptsCounter, 0);
         attemptsCounter = 0;
+    }
+
+    private void addNumber(int number) {
+        attempts[attemptsCounter++] = number;
+    }
+
+    public int getLastAttempt() {
+        return attempts[attemptsCounter - 1];
     }
 }

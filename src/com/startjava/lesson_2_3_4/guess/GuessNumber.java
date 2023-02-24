@@ -17,13 +17,15 @@ public class GuessNumber {
     public void start() {
         prepareGame();
         while (areAttemptsLeft(player2)) {
-            if (isGuessed(makeMove(player1))) {
+            makeMove(player1);
+            if (isGuessed(player1.getLastAttempt())) {
                 printCongratulations(player1);
                 printAttempts(player1, player2);
                 return;
             }
             areAttemptsLeft(player1);
-            if (isGuessed(makeMove(player2))) {
+            makeMove(player2);
+            if (isGuessed(player2.getLastAttempt())) {
                 printCongratulations(player2);
                 printAttempts(player2, player1);
                 return;
@@ -62,10 +64,14 @@ public class GuessNumber {
         return false;
     }
 
-    private int makeMove(Player player) {
+    private void makeMove(Player player) {
         int playerNumber = inputNumber(player);
-        player.addNumber(playerNumber);
-        return playerNumber;
+        try {
+            player.setAttempts(playerNumber);
+        } catch (ArithmeticException e) {
+            System.out.println("Некорретное число!\nВведите число в пределах (0, 100]:");
+            makeMove(player);
+        }
     }
 
     private void printAttempts(Player player1, Player player2) {
