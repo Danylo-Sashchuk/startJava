@@ -19,13 +19,11 @@ public class GuessNumber {
         while (areAttemptsLeft(player2)) {
             if (isGuessed(makeMove(player1))) {
                 printCongratulations(player1);
-                printAttempts(player1, player2);
                 return;
             }
             areAttemptsLeft(player1);
             if (isGuessed(makeMove(player2))) {
                 printCongratulations(player2);
-                printAttempts(player2, player1);
                 return;
             }
         }
@@ -86,6 +84,7 @@ public class GuessNumber {
     private void printCongratulations(Player winner) {
         System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + winner.getAttemptsCounter() + " попытки!");
+        printAttempts(player1, player2);
     }
 
     private boolean areAttemptsLeft(Player player) {
