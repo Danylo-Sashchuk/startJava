@@ -17,26 +17,27 @@ public class GuessNumber {
     public void start() {
         prepareGame();
         while (areAttemptsLeft(player2)) {
-            int playerNumber = inputNumber(player1);
-            player1.addNumber(playerNumber);
-            player1.incrementAttemptsCounter();
-            if (isGuessed(playerNumber)) {
+            if (isGuessed(makeMove(player1))) {
                 printCongratulations(player1);
                 printAttempts(player1, player2);
                 return;
             }
             areAttemptsLeft(player1);
-            playerNumber = inputNumber(player2);
-            player2.addNumber(playerNumber);
-            player2.incrementAttemptsCounter();
-            if (isGuessed(playerNumber)) {
+            if (isGuessed(makeMove(player2))) {
                 printCongratulations(player2);
-                printAttempts(player1, player2);
+                printAttempts(player2, player1);
                 return;
             }
         }
         System.out.println("Никто из игроков не угадал число!");
         printAttempts(player1, player2);
+    }
+
+    private int makeMove(Player player) {
+        int playerNumber = inputNumber(player);
+        player.addNumber(playerNumber);
+        player.incrementAttemptsCounter();
+        return playerNumber;
     }
 
     private void prepareGame() {
@@ -84,7 +85,7 @@ public class GuessNumber {
 
     private void printCongratulations(Player winner) {
         System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
-                " с " + (winner.getAttemptsCounter() + 1) + " попытки!");
+                " с " + winner.getAttemptsCounter() + " попытки!");
     }
 
     private boolean areAttemptsLeft(Player player) {
