@@ -4,41 +4,35 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-
-    private final Player player1;
-    private final Player player2;
+    private final Player[] players;
     private int targetNumber;
 
-    public GuessNumber(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
+    public GuessNumber(Player... players) {
+        this.players = players;
     }
 
     public void start() {
         prepareGame();
-        while (areAttemptsLeft(player2)) {
-            makeMove(player1);
-            if (isGuessed(player1.getLastAttempt())) {
-                printCongratulations(player1);
-                printAttempts(player1, player2);
-                return;
-            }
-            areAttemptsLeft(player1);
-            makeMove(player2);
-            if (isGuessed(player2.getLastAttempt())) {
-                printCongratulations(player2);
-                printAttempts(player2, player1);
-                return;
+        while (areAttemptsLeft(players[players.length - 1])) {
+            for (Player player : players) {
+                makeMove(player);
+                if (isGuessed(player.getLastAttempt())) {
+                    printCongratulations(player);
+                    printAttempts(players);
+                    return;
+                }
+                areAttemptsLeft(player);
             }
         }
         System.out.println("Никто из игроков не угадал число!");
-        printAttempts(player1, player2);
+        printAttempts(players);
     }
 
     private void prepareGame() {
         generateTargetNumber();
-        player1.reset();
-        player2.reset();
+        for (Player player : players) {
+            player.reset();
+        }
     }
 
     private void generateTargetNumber() {
@@ -74,11 +68,11 @@ public class GuessNumber {
         }
     }
 
-    private void printAttempts(Player player1, Player player2) {
-        System.out.println(player1.getName() + ", вот ваши числа:");
-        printArray(player1.getAttempts());
-        System.out.println(player2.getName() + ", а вот ваши:");
-        printArray(player2.getAttempts());
+    private void printAttempts(Player[] players) {
+        for (Player player : players) {
+            System.out.println(player.getName() + ", вот ваши числа:");
+            printArray(player.getAttempts());
+        }
     }
 
     private void printArray(int[] attempts) {
@@ -89,8 +83,7 @@ public class GuessNumber {
     }
 
     private void printCongratulations(Player winner) {
-        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
-                " с " + winner.getAttemptsCounter() + " попытки!");
+        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber + " с " + winner.getAttemptsCounter() + " попытки!");
     }
 
     private boolean areAttemptsLeft(Player player) {

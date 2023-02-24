@@ -13,7 +13,9 @@ public class GuessNumberTest {
         Player player1 = new Player(scan.nextLine());
         System.out.print("Второй игрок, теперь вы: ");
         Player player2 = new Player(scan.nextLine());
-        guessGame = new GuessNumber(player1, player2);
+        System.out.print("И, наконец, третий игрок, введите ваше имя: ");
+        Player player3 = new Player(scan.nextLine());
+        guessGame = new GuessNumber(player1, player2, player3);
         startOver();
         System.out.println("Хорошего дня!");
     }
