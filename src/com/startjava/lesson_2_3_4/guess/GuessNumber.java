@@ -38,6 +38,7 @@ public class GuessNumber {
     private void generateTargetNumber() {
         Random rand = new Random();
         targetNumber = rand.nextInt(100) + 1;
+        targetNumber = 50;
     }
 
     private int inputNumber(Player player) {
@@ -48,6 +49,9 @@ public class GuessNumber {
 
 
     private boolean isGuessed(int playerNumber) {
+        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." :
+                playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
+
         if (playerNumber < targetNumber) {
             System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер.");
         } else if (playerNumber > targetNumber) {
@@ -83,7 +87,8 @@ public class GuessNumber {
     }
 
     private void printCongratulations(Player winner) {
-        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber + " с " + winner.getAttemptsCounter() + " попытки!");
+        System.out.println("\nПоздравляем! " + winner.getName() +
+                ", вы угадали " + targetNumber + " с " + winner.getAttemptsCounter() + " попытки!");
     }
 
     private boolean areAttemptsLeft(Player player) {
