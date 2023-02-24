@@ -38,7 +38,6 @@ public class GuessNumber {
     private void generateTargetNumber() {
         Random rand = new Random();
         targetNumber = rand.nextInt(100) + 1;
-        targetNumber = 50;
     }
 
     private int inputNumber(Player player) {
