@@ -21,6 +21,11 @@ public class Player {
     public int[] getAttempts() {
         return Arrays.copyOf(attempts, attemptsCounter);
     }
+    public void setAttempts(int number) {
+        if (number > 0 && number <= 100) {
+            addNumber(number);
+        }
+    }
 
     public void addNumber(int number) {
         attempts[attemptsCounter++] = number;
