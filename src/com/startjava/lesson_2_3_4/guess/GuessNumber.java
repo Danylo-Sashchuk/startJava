@@ -65,7 +65,6 @@ public class GuessNumber {
     private int makeMove(Player player) {
         int playerNumber = inputNumber(player);
         player.addNumber(playerNumber);
-        player.incrementAttemptsCounter();
         return playerNumber;
     }
 

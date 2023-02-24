@@ -23,15 +23,11 @@ public class Player {
     }
 
     public void addNumber(int number) {
-        attempts[attemptsCounter] = number;
+        attempts[attemptsCounter++] = number;
     }
 
     public int getAttemptsCounter() {
         return attemptsCounter;
-    }
-
-    public void incrementAttemptsCounter() {
-        attemptsCounter++;
     }
 
     public void reset() {
