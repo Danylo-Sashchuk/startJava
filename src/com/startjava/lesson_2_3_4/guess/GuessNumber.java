@@ -33,13 +33,6 @@ public class GuessNumber {
         printAttempts(player1, player2);
     }
 
-    private int makeMove(Player player) {
-        int playerNumber = inputNumber(player);
-        player.addNumber(playerNumber);
-        player.incrementAttemptsCounter();
-        return playerNumber;
-    }
-
     private void prepareGame() {
         generateTargetNumber();
         player1.reset();
@@ -67,6 +60,13 @@ public class GuessNumber {
             return true;
         }
         return false;
+    }
+
+    private int makeMove(Player player) {
+        int playerNumber = inputNumber(player);
+        player.addNumber(playerNumber);
+        player.incrementAttemptsCounter();
+        return playerNumber;
     }
 
     private void printAttempts(Player player1, Player player2) {
