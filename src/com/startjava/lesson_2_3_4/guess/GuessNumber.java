@@ -51,15 +51,7 @@ public class GuessNumber {
     private boolean isGuessed(int playerNumber) {
         System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." :
                 playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
-
-        if (playerNumber < targetNumber) {
-            System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер.");
-        } else if (playerNumber > targetNumber) {
-            System.out.println("Число " + playerNumber + " больше того, что загадал компьютер.");
-        } else {
-            return true;
-        }
-        return false;
+        return targetNumber == playerNumber;
     }
 
     private void makeMove(Player player) {
