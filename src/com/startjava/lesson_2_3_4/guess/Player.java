@@ -22,12 +22,12 @@ public class Player {
         return Arrays.copyOf(attempts, attemptsCounter);
     }
 
-    public void addNumber(int number) {
-        attempts[attemptsCounter++] = number;
-    }
-
     public int getAttemptsCounter() {
         return attemptsCounter;
+    }
+
+    public void addNumber(int number) {
+        attempts[attemptsCounter++] = number;
     }
 
     public void reset() {

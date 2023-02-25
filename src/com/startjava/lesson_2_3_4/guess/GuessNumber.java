@@ -44,6 +44,14 @@ public class GuessNumber {
         targetNumber = rand.nextInt(100) + 1;
     }
 
+    private boolean areAttemptsLeft(Player player) {
+        if (player.getAttemptsCounter() == Player.ATTEMPTS_LIMIT) {
+            System.out.println("У " + player.getName() + " закончились попытки.");
+            return false;
+        }
+        return true;
+    }
+
     private int inputNumber(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
@@ -68,6 +76,11 @@ public class GuessNumber {
         return playerNumber;
     }
 
+    private void printCongratulations(Player winner) {
+        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
+                " с " + winner.getAttemptsCounter() + " попытки!");
+    }
+
     private void printAttempts(Player player1, Player player2) {
         System.out.println(player1.getName() + ", вот ваши числа:");
         printArray(player1.getAttempts());
@@ -80,18 +93,5 @@ public class GuessNumber {
             System.out.print(attempt + " ");
         }
         System.out.println();
-    }
-
-    private void printCongratulations(Player winner) {
-        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
-                " с " + winner.getAttemptsCounter() + " попытки!");
-    }
-
-    private boolean areAttemptsLeft(Player player) {
-        if (player.getAttemptsCounter() == Player.ATTEMPTS_LIMIT) {
-            System.out.println("У " + player.getName() + " закончились попытки.");
-            return false;
-        }
-        return true;
     }
 }
