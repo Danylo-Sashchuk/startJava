@@ -17,13 +17,15 @@ public class GuessNumber {
     public void start() {
         setUp();
         while (hasAttempts(player2)) {
-            if (isGuessed(makeMove(player1))) {
+            makeMove(player1);
+            if (isGuessed(player1)) {
                 printCongratulations(player1);
                 printAttempts(player1, player2);
                 return;
             }
             hasAttempts(player1);
-            if (isGuessed(makeMove(player2))) {
+            makeMove(player2);
+            if (isGuessed(player2)) {
                 printCongratulations(player2);
                 printAttempts(player2, player1);
                 return;
@@ -59,7 +61,8 @@ public class GuessNumber {
     }
 
 
-    private boolean isGuessed(int playerNumber) {
+    private boolean isGuessed(Player player) {
+        int playerNumber = player.getLastAttempt();
         if (playerNumber < targetNumber) {
             System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер.");
         } else if (playerNumber > targetNumber) {
@@ -70,10 +73,9 @@ public class GuessNumber {
         return false;
     }
 
-    private int makeMove(Player player) {
+    private void makeMove(Player player) {
         int playerNumber = inputNumber(player);
         player.addNumber(playerNumber);
-        return playerNumber;
     }
 
     private void printCongratulations(Player winner) {

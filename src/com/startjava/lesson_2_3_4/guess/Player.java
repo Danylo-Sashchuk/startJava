@@ -33,4 +33,8 @@ public class Player {
         Arrays.fill(attempts, 0, countAttempts, 0);
         countAttempts = 0;
     }
+
+    public int getLastAttempt() {
+        return attempts[countAttempts - 1];
+    }
 }
