@@ -13,15 +13,15 @@ public class GuessNumber {
 
     public void start() {
         setUp();
-        while (areAttemptsLeft(players[players.length - 1])) {
+        while (hasAttempts(players[players.length - 1])) {
             for (Player player : players) {
                 makeMove(player);
-                if (isGuessed(player.getLastAttempt())) {
+                if (isGuessed(player)) {
                     printCongratulations(player);
                     printAttempts(players);
                     return;
                 }
-                areAttemptsLeft(player);
+                hasAttempts(player);
             }
         }
         System.out.println("Никто из игроков не угадал число!");
@@ -48,34 +48,33 @@ public class GuessNumber {
         return true;
     }
 
+    private void makeMove(Player player) {
+        int playerNumber = inputNumber(player);
+        try {
+            player.setAttempt(playerNumber);
+        } catch (ArithmeticException e) {
+            System.out.println("Некорретное число!\nВведите число в пределах (0, 100]:");
+            makeMove(player);
+        }
+    }
+
     private int inputNumber(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
         return scan.nextInt();
     }
 
-
     private boolean isGuessed(Player player) {
         int playerNumber = player.getLastAttempt();
-        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." :
+        System.out.println(playerNumber < targetNumber ?
+                "Число " + playerNumber + " меньше того, что загадал компьютер." :
                 playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
         return targetNumber == playerNumber;
-    }
-
-    private void makeMove(Player player) {
-        int playerNumber = inputNumber(player);
-        player.addNumber(playerNumber);
     }
 
     private void printCongratulations(Player winner) {
         System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + winner.getCountAttempts() + " попытки!");
-        try {
-            player.setAttempts(playerNumber);
-        } catch (ArithmeticException e) {
-            System.out.println("Некорретное число!\nВведите число в пределах (0, 100]:");
-            makeMove(player);
-        }
     }
 
     private void printAttempts(Player[] players) {
