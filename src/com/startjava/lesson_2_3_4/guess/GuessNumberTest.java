@@ -3,10 +3,9 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
-    private static Scanner scan;
 
     public static void main(String[] args) {
-        scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("\tУ каждого игрока по " + Player.ATTEMPTS_LIMIT + " попыток.");
         System.out.print("Первый игрок, введите свое имя: ");
         Player player1 = new Player(scan.nextLine());
@@ -15,11 +14,11 @@ public class GuessNumberTest {
         GuessNumber guessGame = new GuessNumber(player1, player2);
         do {
             guessGame.start();
-        } while (isNext());
+        } while (isNext(scan));
         System.out.println("Хорошего дня!");
     }
 
-    private static boolean isNext() {
+    private static boolean isNext(Scanner scan) {
         char answer = 0;
         while (answer != 'y' && answer != 'n') {
             System.out.println("\nХотите продолжить игру? [y/n]:");

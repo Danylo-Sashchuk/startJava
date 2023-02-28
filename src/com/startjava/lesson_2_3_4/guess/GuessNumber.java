@@ -15,14 +15,14 @@ public class GuessNumber {
     }
 
     public void start() {
-        prepareGame();
-        while (areAttemptsLeft(player2)) {
+        setUp();
+        while (hasAttempts(player2)) {
             if (isGuessed(makeMove(player1))) {
                 printCongratulations(player1);
                 printAttempts(player1, player2);
                 return;
             }
-            areAttemptsLeft(player1);
+            hasAttempts(player1);
             if (isGuessed(makeMove(player2))) {
                 printCongratulations(player2);
                 printAttempts(player2, player1);
@@ -33,10 +33,10 @@ public class GuessNumber {
         printAttempts(player1, player2);
     }
 
-    private void prepareGame() {
+    private void setUp() {
         generateTargetNumber();
-        player1.reset();
-        player2.reset();
+        player1.clearAttempts();
+        player2.clearAttempts();
     }
 
     private void generateTargetNumber() {
@@ -44,8 +44,8 @@ public class GuessNumber {
         targetNumber = rand.nextInt(100) + 1;
     }
 
-    private boolean areAttemptsLeft(Player player) {
-        if (player.getAttemptsCounter() == Player.ATTEMPTS_LIMIT) {
+    private boolean hasAttempts(Player player) {
+        if (player.getCountAttempts() == Player.ATTEMPTS_LIMIT) {
             System.out.println("У " + player.getName() + " закончились попытки.");
             return false;
         }
@@ -78,7 +78,7 @@ public class GuessNumber {
 
     private void printCongratulations(Player winner) {
         System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
-                " с " + winner.getAttemptsCounter() + " попытки!");
+                " с " + winner.getCountAttempts() + " попытки!");
     }
 
     private void printAttempts(Player player1, Player player2) {
