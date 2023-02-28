@@ -3,11 +3,9 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
-    private static Scanner scan;
-    private static GuessNumber guessGame;
 
     public static void main(String[] args) {
-        scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("\tУ каждого игрока по " + Player.ATTEMPTS_LIMIT + " попыток.");
         System.out.print("Первый игрок, введите свое имя: ");
         Player player1 = new Player(scan.nextLine());
@@ -15,23 +13,19 @@ public class GuessNumberTest {
         Player player2 = new Player(scan.nextLine());
         System.out.print("И, наконец, третий игрок, введите ваше имя: ");
         Player player3 = new Player(scan.nextLine());
-        guessGame = new GuessNumber(player1, player2, player3);
-        startOver();
+        GuessNumber guessGame = new GuessNumber(player1, player2, player3);
+        do {
+            guessGame.start();
+        } while (isNext(scan));
         System.out.println("Хорошего дня!");
     }
 
-    private static void startOver() {
-        guessGame.start();
-        isNext();
-    }
-
-    private static void isNext() {
-        System.out.println("\nХотите продолжить игру? [y/n]:");
-        char answer = scan.nextLine().charAt(0);
-        if (answer == 'y') {
-            startOver();
-        } else if (answer != 'n') {
-            isNext();
+    private static boolean isNext(Scanner scan) {
+        char answer = 0;
+        while (answer != 'y' && answer != 'n') {
+            System.out.println("\nХотите продолжить игру? [y/n]:");
+            answer = scan.nextLine().charAt(0);
         }
+        return answer == 'y';
     }
 }

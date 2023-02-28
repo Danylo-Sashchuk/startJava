@@ -6,15 +6,15 @@ public class CalculatorTest {
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String... args) {
-        System.out.print("Введите математическое выражение: ");
-        try {
-            double result = Calculator.calculate(scan.nextLine());
-            print(result);
-            isNext();
-        } catch (Exception e) {
-            System.out.println("Введите корректные значения. ");
-            main();
-        }
+        do {
+            System.out.print("Введите математическое выражение: ");
+            try {
+                double result = Calculator.calculate(scan.nextLine());
+                print(result);
+            } catch (RuntimeException e) {
+                System.out.println("Введите корректные значения. ");
+            }
+        } while (isNext());
     }
 
     private static void print(double result) {
@@ -25,13 +25,12 @@ public class CalculatorTest {
         }
     }
 
-    private static void isNext() {
-        System.out.println("Хотите продолжить вычисления? [y/n]:");
-        char answer = scan.nextLine().charAt(0);
-        if (answer == 'y') {
-            main();
-        } else if (answer != 'n') {
-            isNext();
+    private static boolean isNext() {
+        char answer = 0;
+        while (answer != 'y' && answer != 'n') {
+            System.out.println("Хотите продолжить вычисления? [y/n]:");
+            answer = scan.nextLine().charAt(0);
         }
+        return answer == 'y';
     }
 }

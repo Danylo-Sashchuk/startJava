@@ -6,12 +6,11 @@ public class Player {
     static final int ATTEMPTS_LIMIT = 10;
     private String name;
     private int[] attempts;
-    private int attemptsCounter;
+    private int countAttempts;
 
     public Player(String name) {
         this.name = name;
         attempts = new int[ATTEMPTS_LIMIT];
-        attemptsCounter = 0;
     }
 
     public String getName() {
@@ -19,7 +18,11 @@ public class Player {
     }
 
     public int[] getAttempts() {
-        return Arrays.copyOf(attempts, attemptsCounter);
+        return Arrays.copyOf(attempts, countAttempts);
+    }
+
+    public int getCountAttempts() {
+        return countAttempts;
     }
 
     public void setAttempts(int number) {
@@ -29,20 +32,16 @@ public class Player {
         addNumber(number);
     }
 
-    public int getAttemptsCounter() {
-        return attemptsCounter;
+    public void addNumber(int number) {
+        attempts[countAttempts++] = number;
     }
 
-    public void reset() {
-        Arrays.fill(attempts, 0, attemptsCounter, 0);
-        attemptsCounter = 0;
-    }
-
-    private void addNumber(int number) {
-        attempts[attemptsCounter++] = number;
+    public void clearAttempts() {
+        Arrays.fill(attempts, 0, countAttempts, 0);
+        countAttempts = 0;
     }
 
     public int getLastAttempt() {
-        return attempts[attemptsCounter - 1];
+        return attempts[countAttempts - 1];
     }
 }
