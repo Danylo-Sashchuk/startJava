@@ -17,24 +17,16 @@ public class GuessNumber {
             for (Player player : players) {
                 makeMove(player);
                 if (isGuessed(player)) {
-                    printCongratulations(player);
-                    printAttempts(players);
-                    return;
+                    boolean isWinnerDetermined = makeMove(player);
+                    if (isWinnerDetermined) {
+                        return;
+                    }
                 }
                 hasAttempts(player);
-        while (hasAttempts(player2)) {
-            boolean isWinnerDetermined = makeMove(player1);
-            if (isWinnerDetermined) {
-                return;
             }
-            hasAttempts(player1);
-            isWinnerDetermined = makeMove(player2);
-            if (isWinnerDetermined) {
-                return;
-            }
+            System.out.println("Никто из игроков не угадал число!");
+            printAttempts();
         }
-        System.out.println("Никто из игроков не угадал число!");
-        printAttempts(players);
     }
 
     private void setUp() {
@@ -57,17 +49,6 @@ public class GuessNumber {
         return true;
     }
 
-    private void makeMove(Player player) {
-        int playerNumber = inputNumber(player);
-        try {
-            player.setAttempt(playerNumber);
-        } catch (ArithmeticException e) {
-            System.out.println("Некорретное число!\nВведите число в пределах (0, 100]:");
-            makeMove(player);
-        }
-    }
-
-    private int inputNumber(Player player) {
     private boolean makeMove(Player player) {
         inputNumber(player);
         if (isGuessed(player)) {
@@ -81,7 +62,12 @@ public class GuessNumber {
     private void inputNumber(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
-        player.addNumber(scan.nextInt());
+        try {
+            player.setAttempt(scan.nextInt());
+        } catch (ArithmeticException e) {
+            System.out.println("Некорретное число!\nВведите число в пределах (0, 100].");
+            makeMove(player);
+        }
     }
 
     private boolean isGuessed(Player player) {
@@ -96,27 +82,19 @@ public class GuessNumber {
         return false;
     }
 
-    private void makeMove(Player player) {
-        int playerNumber = inputNumber(player);
-        player.addNumber(playerNumber);
-    }
-
     private void printCongratulations(Player winner) {
         System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + winner.getCountAttempts() + " попытки!");
     }
 
-    private void printAttempts(Player[] players) {
+    private void printAttempts() {
         for (Player player : players) {
             System.out.println(player.getName() + ", вот ваши числа:");
-            printArray(player.getAttempts());
+            for (int attempt : player.getAttempts()) {
+                System.out.print(attempt + " ");
+            }
+            System.out.println();
         }
     }
 
-    private void printArray(int[] attempts) {
-        for (int attempt : attempts) {
-            System.out.print(attempt + " ");
-        }
-        System.out.println();
-    }
 }
