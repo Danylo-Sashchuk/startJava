@@ -27,7 +27,7 @@ public class GuessNumber {
             makeMove(player2);
             if (isGuessed(player2)) {
                 printCongratulations(player2);
-                printAttempts(player2, player1);
+                printAttempts(player1, player2);
                 return;
             }
         }
@@ -54,12 +54,16 @@ public class GuessNumber {
         return true;
     }
 
-    private int inputNumber(Player player) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print(player.getName() + ", введите число: ");
-        return scan.nextInt();
+    private void makeMove(Player player) {
+        inputNumber(player);
     }
 
+    private void inputNumber(Player player) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print(player.getName() + ", введите число: ");
+        int playerNumber = scan.nextInt();
+        player.addNumber(playerNumber);
+    }
 
     private boolean isGuessed(Player player) {
         int playerNumber = player.getLastAttempt();
@@ -73,25 +77,14 @@ public class GuessNumber {
         return false;
     }
 
-    private void makeMove(Player player) {
-        int playerNumber = inputNumber(player);
-        player.addNumber(playerNumber);
-    }
-
     private void printCongratulations(Player winner) {
         System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + winner.getCountAttempts() + " попытки!");
     }
 
-    private void printAttempts(Player player1, Player player2) {
-        System.out.println(player1.getName() + ", вот ваши числа:");
-        printArray(player1.getAttempts());
-        System.out.println(player2.getName() + ", а вот ваши:");
-        printArray(player2.getAttempts());
-    }
-
-    private void printArray(int[] attempts) {
-        for (int attempt : attempts) {
+    private void printAttempts(Player player) {
+        System.out.println(player.getName() + ", вот ваши числа:");
+        for (int attempt : player.getAttempts()) {
             System.out.print(attempt + " ");
         }
         System.out.println();

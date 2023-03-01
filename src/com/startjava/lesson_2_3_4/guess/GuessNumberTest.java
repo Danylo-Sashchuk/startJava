@@ -11,19 +11,19 @@ public class GuessNumberTest {
         Player player1 = new Player(scan.nextLine());
         System.out.print("Второй игрок, теперь вы: ");
         Player player2 = new Player(scan.nextLine());
-        GuessNumber guessGame = new GuessNumber(player1, player2);
+        GuessNumber game = new GuessNumber(player1, player2);
         do {
-            guessGame.start();
+            game.start();
         } while (isNext(scan));
         System.out.println("Хорошего дня!");
     }
 
     private static boolean isNext(Scanner scan) {
-        char answer = 0;
-        while (answer != 'y' && answer != 'n') {
+        char answer;
+        do {
             System.out.println("\nХотите продолжить игру? [y/n]:");
             answer = scan.nextLine().charAt(0);
-        }
+        } while (answer != 'y' && answer != 'n');
         return answer == 'y';
     }
 }
