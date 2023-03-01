@@ -22,6 +22,15 @@ public class GuessNumber {
                     return;
                 }
                 hasAttempts(player);
+        while (hasAttempts(player2)) {
+            boolean isWinnerDetermined = makeMove(player1);
+            if (isWinnerDetermined) {
+                return;
+            }
+            hasAttempts(player1);
+            isWinnerDetermined = makeMove(player2);
+            if (isWinnerDetermined) {
+                return;
             }
         }
         System.out.println("Никто из игроков не угадал число!");
@@ -59,17 +68,37 @@ public class GuessNumber {
     }
 
     private int inputNumber(Player player) {
+    private boolean makeMove(Player player) {
+        inputNumber(player);
+        if (isGuessed(player)) {
+            printCongratulations(player);
+            printAttempts();
+            return true;
+        }
+        return false;
+    }
+
+    private void inputNumber(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
-        return scan.nextInt();
+        player.addNumber(scan.nextInt());
     }
 
     private boolean isGuessed(Player player) {
         int playerNumber = player.getLastAttempt();
-        System.out.println(playerNumber < targetNumber ?
-                "Число " + playerNumber + " меньше того, что загадал компьютер." :
-                playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
-        return targetNumber == playerNumber;
+        if (playerNumber < targetNumber) {
+            System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер.");
+        } else if (playerNumber > targetNumber) {
+            System.out.println("Число " + playerNumber + " больше того, что загадал компьютер.");
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    private void makeMove(Player player) {
+        int playerNumber = inputNumber(player);
+        player.addNumber(playerNumber);
     }
 
     private void printCongratulations(Player winner) {
