@@ -19,18 +19,16 @@ public class GuessNumber {
         while (hasAttempts(player2)) {
             boolean isWinnerDetermined = makeMove(player1);
             if (isWinnerDetermined) {
-                printAttempts(player1, player2);
                 return;
             }
             hasAttempts(player1);
             isWinnerDetermined = makeMove(player2);
             if (isWinnerDetermined) {
-                printAttempts(player1, player2);
                 return;
             }
         }
         System.out.println("Никто из игроков не угадал число!");
-        printAttempts(player1, player2);
+        printAttempts();
     }
 
     private void setUp() {
@@ -56,6 +54,7 @@ public class GuessNumber {
         inputNumber(player);
         if (isGuessed(player)) {
             printCongratulations(player);
+            printAttempts();
             return true;
         }
         return false;
@@ -84,7 +83,7 @@ public class GuessNumber {
                 " с " + winner.getCountAttempts() + " попытки!");
     }
 
-    private void printAttempts(Player player1, Player player2) {
+    private void printAttempts() {
         System.out.println(player1.getName() + ", вот ваши числа:");
         for (int attempt : player1.getAttempts()) {
             System.out.print(attempt + " ");
