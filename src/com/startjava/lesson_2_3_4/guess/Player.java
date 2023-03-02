@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private int[] attempts;
     private int countAttempts;
+    private int countWins;
 
     public Player(String name) {
         this.name = name;
@@ -30,6 +31,14 @@ public class Player {
 
     public int getCountAttempts() {
         return countAttempts;
+    }
+
+    public int getCountWins() {
+        return countWins;
+    }
+
+    public void addWin() {
+        countWins++;
     }
 
     private void addNumber(int number) {
