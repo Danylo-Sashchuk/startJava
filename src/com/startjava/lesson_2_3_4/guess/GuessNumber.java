@@ -29,7 +29,7 @@ public class GuessNumber {
 
     private void playRound() {
         setUp();
-        boolean isWinnerDetermined = false;
+        boolean isWinnerDetermined;
         for (int j = 0; j < Player.ATTEMPTS_LIMIT; j++) {
             for (Player player : players) {
                 isWinnerDetermined = makeMove(player);
@@ -40,7 +40,7 @@ public class GuessNumber {
                 hasAttempts(player);
             }
         }
-        System.out.println("Никто из игроков не угадал число!");
+        System.out.println("\nНикто из игроков не угадал число!");
         printAttempts();
     }
 
@@ -101,7 +101,7 @@ public class GuessNumber {
     }
 
     private void printCongratulations(Player winner) {
-        System.out.println("\nПоздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
+        System.out.println("Поздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
                 " с " + winner.getCountAttempts() + " попытки!");
     }
 
@@ -127,10 +127,11 @@ public class GuessNumber {
         int winnerCounter = 0;
         boolean isSeveralWinners = false;
         Player winner = players[0];
-        for (int i = 0; i < players.length; i++) {
+        for (int i = 1; i < players.length; i++) {
             if (players[i].getCountWins() > winner.getCountWins()) {
                 winner = players[i];
-            } else if (players[i].getCountWins() == winner.getCountWins()) {
+            } else if (players[i].getCountWins() == winner.getCountWins() &&
+                    winner.getCountWins() != 0) {
                 isSeveralWinners = true;
                 severalWinners[winnerCounter++] = players[i];
             }
@@ -141,6 +142,10 @@ public class GuessNumber {
             for (int i = 0; i < winnerCounter; i++) {
                 System.out.print(severalWinners[i].getName() + " ");
             }
+        } else if (winner.getCountWins() == 0) {
+            System.out.println("Упс, победителя нет!");
+        } else {
+            System.out.println("Поздравляем " + winner.getName() + " с победой!");
         }
     }
 }
