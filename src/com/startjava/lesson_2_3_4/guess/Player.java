@@ -37,4 +37,8 @@ public class Player {
     public int getLastAttempt() {
         return attempts[countAttempts - 1];
     }
+
+    public boolean hasAttempts() {
+        return getCountAttempts() == ATTEMPTS_LIMIT;
+    }
 }

@@ -15,20 +15,22 @@ public class GuessNumber {
     }
 
     public void start() {
+        System.out.println("\tУ каждого игрока по " + Player.ATTEMPTS_LIMIT + " попыток.");
         setUp();
-        while (hasAttempts(player2)) {
-            boolean isWinnerDetermined = makeMove(player1);
-            if (isWinnerDetermined) {
+        while (player2.hasAttempts()) {
+            if (makeMove(player1)) {
                 return;
             }
-            hasAttempts(player1);
-            isWinnerDetermined = makeMove(player2);
-            if (isWinnerDetermined) {
+            if (player1.hasAttempts()) {
+                System.out.println("У игрока " + player1.getName() + " закончились попытки.");
+            }
+            if (makeMove(player2)) {
                 return;
             }
         }
+        System.out.println("У игрока " + player2.getName() + " закончились попытки.");
         System.out.println("Никто из игроков не угадал число!");
-        printAttempts();
+        printAttempts(player1, player2);
     }
 
     private void setUp() {
@@ -42,19 +44,11 @@ public class GuessNumber {
         targetNumber = rand.nextInt(100) + 1;
     }
 
-    private boolean hasAttempts(Player player) {
-        if (player.getCountAttempts() == Player.ATTEMPTS_LIMIT) {
-            System.out.println("У " + player.getName() + " закончились попытки.");
-            return false;
-        }
-        return true;
-    }
-
     private boolean makeMove(Player player) {
         inputNumber(player);
         if (isGuessed(player)) {
             printCongratulations(player);
-            printAttempts();
+            printAttempts(player1, player2);
             return true;
         }
         return false;
@@ -83,16 +77,13 @@ public class GuessNumber {
                 " с " + winner.getCountAttempts() + " попытки!");
     }
 
-    private void printAttempts() {
-        System.out.println(player1.getName() + ", вот ваши числа:");
-        for (int attempt : player1.getAttempts()) {
-            System.out.print(attempt + " ");
+    private void printAttempts(Player... players) {
+        for (Player player : players) {
+            System.out.println(player1.getName() + ", вот ваши числа:");
+            for (int attempt : player.getAttempts()) {
+                System.out.print(attempt + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
-        System.out.println(player2.getName() + ", а вот ваши числа:");
-        for (int attempt : player2.getAttempts()) {
-            System.out.print(attempt + " ");
-        }
-        System.out.println();
     }
 }
