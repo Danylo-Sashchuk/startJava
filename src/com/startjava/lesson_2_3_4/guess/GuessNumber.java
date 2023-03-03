@@ -124,17 +124,17 @@ public class GuessNumber {
 
     private void findWinner() {
         Player[] severalWinners = new Player[players.length];
-        int winnersCounter = 0;
+        int winnersCounter = 1;
         severalWinners[0] = players[0];
         for (int i = 1; i < players.length; i++) {
             if (players[i].getCountWins() > severalWinners[0].getCountWins()) {
-                winnersCounter = 0;
+                winnersCounter = 1;
                 severalWinners[0] = players[i];
-            } else if (players[i].getCountWins() == severalWinners[winnersCounter].getCountWins()) {
+            } else if (players[i].getCountWins() == severalWinners[winnersCounter - 1].getCountWins()) {
                 severalWinners[winnersCounter++] = players[i];
             }
         }
-        if (winnersCounter > 0) {
+        if (winnersCounter > 1) {
             System.out.println("У нас несколько победителей!");
             System.out.print("Поздравляем: ");
             for (int i = 0; i < winnersCounter; i++) {
