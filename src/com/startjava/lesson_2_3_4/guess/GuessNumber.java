@@ -69,7 +69,6 @@ public class GuessNumber {
     private void generateTargetNumber() {
         Random rand = new Random();
         targetNumber = rand.nextInt(100) + 1;
-        targetNumber = 50;
     }
 
     private boolean makeMove(Player player) {
@@ -113,7 +112,6 @@ public class GuessNumber {
             }
             System.out.println();
         }
-        System.out.println();
     }
 
     private void hasAttempts(Player player) {
@@ -123,8 +121,35 @@ public class GuessNumber {
     }
 
     private void findWinner() {
-        Player[] severalWinners = new Player[players.length];
+        Player[] winners = new Player[players.length];
         int winnersCounter = 1;
-        severalWinners[0] = players[0];
+        winners[0] = players[0];
+        for (int i = 1; i < players.length; i++) {
+            if (players[i].getCountWins() > winners[0].getCountWins()) {
+                winners[0] = players[i];
+                winnersCounter = 1;
+            } else if (players[i].getCountWins() == winners[0].getCountWins()) {
+                winners[winnersCounter++] = players[i];
+            }
+        }
+        printCongratulation(winners, winnersCounter);
+    }
+
+    private void printCongratulation(Player[] winners, int winnersCounter) {
+        if (winnersCounter == 1) {
+            System.out.println("По итогам " + ROUNDS_LIMIT + " раундов победитель - " + winners[0].getName());
+            System.out.println("Поздравляем!");
+        } else if (winnersCounter > 1) {
+            if (winners[0].getCountWins() == 0) {
+                System.out.println("Упс, никто не победил.");
+            } else {
+                System.out.println("Ух ты, у нас несколько победителей!");
+                System.out.print("Поздравляем:");
+                for (int i = 0; i < winnersCounter; i++) {
+                    System.out.print(" " + winners[i].getName());
+                }
+                System.out.println("!");
+            }
+        }
     }
 }
