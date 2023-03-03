@@ -124,28 +124,26 @@ public class GuessNumber {
 
     private void findWinner() {
         Player[] severalWinners = new Player[players.length];
-        int winnerCounter = 0;
-        boolean isSeveralWinners = false;
-        Player winner = players[0];
+        int winnersCounter = 0;
+        severalWinners[0] = players[0];
         for (int i = 1; i < players.length; i++) {
-            if (players[i].getCountWins() > winner.getCountWins()) {
-                winner = players[i];
-            } else if (players[i].getCountWins() == winner.getCountWins() &&
-                    winner.getCountWins() != 0) {
-                isSeveralWinners = true;
-                severalWinners[winnerCounter++] = players[i];
+            if (players[i].getCountWins() > severalWinners[0].getCountWins()) {
+                winnersCounter = 0;
+                severalWinners[0] = players[i];
+            } else if (players[i].getCountWins() == severalWinners[winnersCounter].getCountWins()) {
+                severalWinners[winnersCounter++] = players[i];
             }
         }
-        if (isSeveralWinners) {
+        if (winnersCounter > 0) {
             System.out.println("У нас несколько победителей!");
             System.out.print("Поздравляем: ");
-            for (int i = 0; i < winnerCounter; i++) {
+            for (int i = 0; i < winnersCounter; i++) {
                 System.out.print(severalWinners[i].getName() + " ");
             }
-        } else if (winner.getCountWins() == 0) {
+        } else if (severalWinners[0].getCountWins() == 0) {
             System.out.println("Упс, победителя нет!");
         } else {
-            System.out.println("Поздравляем " + winner.getName() + " с победой!");
+            System.out.println("Поздравляем " + severalWinners[0].getName() + " с победой!");
         }
     }
 }
