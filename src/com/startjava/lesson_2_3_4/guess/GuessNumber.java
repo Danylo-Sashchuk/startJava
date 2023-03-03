@@ -13,6 +13,20 @@ public class GuessNumber {
         printPlayersOrder();
     }
 
+    private Player[] shufflePlayers(Player... players) {
+        Random rand = new Random();
+        for (int bound = players.length - 1; bound > 0; bound--) {
+            swap(players, rand.nextInt(bound), bound);
+        }
+        return players;
+    }
+
+    private void swap(Player[] players, int from, int to) {
+        Player temp = players[from];
+        players[from] = players[to];
+        players[to] = temp;
+    }
+
     private void printPlayersOrder() {
         System.out.println("Жребий брошен. Порядок угадывания числа таков:");
         for (int i = 0; i < players.length; i++) {
@@ -29,10 +43,9 @@ public class GuessNumber {
 
     private void playRound() {
         setUp();
-        boolean isWinnerDetermined;
         for (int j = 0; j < Player.ATTEMPTS_LIMIT; j++) {
             for (Player player : players) {
-                isWinnerDetermined = makeMove(player);
+                boolean isWinnerDetermined = makeMove(player);
                 if (isWinnerDetermined) {
                     player.addWin();
                     return;
@@ -42,20 +55,6 @@ public class GuessNumber {
         }
         System.out.println("\nНикто из игроков не угадал число!");
         printAttempts();
-    }
-
-    private Player[] shufflePlayers(Player... players) {
-        Random rand = new Random();
-        for (int bound = players.length - 1; bound > 0; bound--) {
-            swap(players, rand.nextInt(bound), bound);
-        }
-        return players;
-    }
-
-    private void swap(Player[] players, int from, int to) {
-        Player temp = players[from];
-        players[from] = players[to];
-        players[to] = temp;
     }
 
     private void setUp() {
@@ -122,8 +121,8 @@ public class GuessNumber {
 
     private void findWinner() {
         Player[] winners = new Player[players.length];
-        int winnersCounter = 1;
         winners[0] = players[0];
+        int winnersCounter = 1;
         for (int i = 1; i < players.length; i++) {
             if (players[i].getCountWins() > winners[0].getCountWins()) {
                 winners[0] = players[i];

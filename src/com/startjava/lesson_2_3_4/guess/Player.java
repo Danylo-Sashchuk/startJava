@@ -24,7 +24,7 @@ public class Player {
 
     public void setAttempt(int number) {
         if (number <= 0 || number > 100) {
-            throw new ArithmeticException("Incorrect number");
+            throw new RuntimeException("Incorrect number");
         }
         addNumber(number);
     }
