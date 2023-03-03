@@ -21,7 +21,7 @@ public class GuessNumber {
             if (makeMove(player1)) {
                 return;
             }
-            if (player1.hasAttempts()) {
+            if (!player1.hasAttempts()) {
                 System.out.println("У игрока " + player1.getName() + " закончились попытки.");
             }
             if (makeMove(player2)) {

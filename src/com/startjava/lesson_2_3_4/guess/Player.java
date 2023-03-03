@@ -39,6 +39,6 @@ public class Player {
     }
 
     public boolean hasAttempts() {
-        return getCountAttempts() == ATTEMPTS_LIMIT;
+        return getCountAttempts() != ATTEMPTS_LIMIT;
     }
 }
