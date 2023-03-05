@@ -3,7 +3,7 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Arrays;
 
 public class Player {
-    static final int ATTEMPTS_LIMIT = 10;
+    static final int ATTEMPTS_LIMIT = 2;
     private String name;
     private int[] attempts;
     private int countAttempts;
@@ -36,6 +36,8 @@ public class Player {
     public int getCountWins() {
         return countWins;
     }
+
+    public void resetWins() { countWins = 0; }
 
     public void addWin() {
         countWins++;

@@ -40,6 +40,13 @@ public class GuessNumber {
             playRound();
         }
         findWinner();
+        resetPlayersWins();
+    }
+
+    private void resetPlayersWins() {
+        for (Player player : players) {
+            player.resetWins();
+        }
     }
 
     private void playRound() {
@@ -70,6 +77,7 @@ public class GuessNumber {
     private void generateTargetNumber() {
         Random r = new Random();
         targetNumber = r.nextInt(100) + 1;
+        targetNumber = 50;
     }
 
     private boolean makeMove(Player player) {
@@ -91,14 +99,12 @@ public class GuessNumber {
     private boolean isGuessed(Player player) {
         int playerNumber = player.getLastAttempt();
         if (playerNumber == targetNumber) {
-            System.out.println("\nПоздравляем! " + player.getName() + ", вы угадали " + targetNumber +
-                    " с " + player.getCountAttempts() + " попытки!");
+            System.out.println("\nПоздравляем! " + player.getName() + ", вы угадали " + targetNumber + " с " + player.getCountAttempts() + " попытки!");
             printAttempts(players);
             return true;
         }
-        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." :
-                playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
-        return targetNumber == playerNumber;
+        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." : "Число " + playerNumber + " больше того, что загадал компьютер.");
+        return false;
     }
 
     private void printAttempts() {
@@ -118,12 +124,6 @@ public class GuessNumber {
                 System.out.print(attempt + " ");
             }
             System.out.println();
-        }
-    }
-
-    private void hasAttempts(Player player) {
-        if (player.getCountAttempts() == Player.ATTEMPTS_LIMIT) {
-            System.out.println("У " + player.getName() + " закончились попытки.");
         }
     }
 
