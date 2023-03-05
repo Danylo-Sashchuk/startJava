@@ -14,9 +14,9 @@ public class GuessNumber {
     }
 
     private Player[] shufflePlayers(Player... players) {
-        Random rand = new Random();
+        Random r = new Random();
         for (int bound = players.length - 1; bound > 0; bound--) {
-            swap(players, rand.nextInt(bound), bound);
+            swap(players, r.nextInt(bound), bound);
         }
         return players;
     }
@@ -43,12 +43,6 @@ public class GuessNumber {
         resetPlayersWins();
     }
 
-    private void resetPlayersWins() {
-        for (Player player : players) {
-            player.resetWins();
-        }
-    }
-
     private void playRound() {
         setUp();
         for (int j = 0; j < Player.ATTEMPTS_LIMIT; j++) {
@@ -63,7 +57,7 @@ public class GuessNumber {
             }
         }
         System.out.println("Никто из игроков не угадал число!");
-        printAttempts();
+        printAttempts(players);
     }
 
     private void setUp() {
@@ -77,7 +71,6 @@ public class GuessNumber {
     private void generateTargetNumber() {
         Random r = new Random();
         targetNumber = r.nextInt(100) + 1;
-        targetNumber = 50;
     }
 
     private boolean makeMove(Player player) {
@@ -99,22 +92,14 @@ public class GuessNumber {
     private boolean isGuessed(Player player) {
         int playerNumber = player.getLastAttempt();
         if (playerNumber == targetNumber) {
-            System.out.println("\nПоздравляем! " + player.getName() + ", вы угадали " + targetNumber + " с " + player.getCountAttempts() + " попытки!");
+            System.out.println("\nПоздравляем! " + player.getName() + ", вы угадали " + targetNumber + " с " +
+                    player.getCountAttempts() + " попытки!");
             printAttempts(players);
             return true;
         }
-        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." : "Число " + playerNumber + " больше того, что загадал компьютер.");
+        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер."
+                : "Число " + playerNumber + " больше того, что загадал компьютер.");
         return false;
-    }
-
-    private void printAttempts() {
-        for (Player player : players) {
-            System.out.println(player.getName() + ", вот ваши числа:");
-            for (int attempt : player.getAttempts()) {
-                System.out.print(attempt + " ");
-            }
-            System.out.println();
-        }
     }
 
     private void printAttempts(Player... players) {
@@ -139,24 +124,30 @@ public class GuessNumber {
                 winners[winnersCounter++] = players[i];
             }
         }
-        printCongratulation(winners, winnersCounter);
+        printCongratulations(winners, winnersCounter);
     }
 
-    private void printCongratulation(Player[] winners, int winnersCounter) {
+    private void printCongratulations(Player[] winners, int winnersCounter) {
+        if (winners[0].getCountWins() == 0) {
+            System.out.println("Упс, никто не победил.");
+            return;
+        }
         if (winnersCounter == 1) {
             System.out.println("По итогам " + ROUNDS_LIMIT + " раундов победитель - " + winners[0].getName());
             System.out.println("Поздравляем!");
-        } else if (winnersCounter > 1) {
-            if (winners[0].getCountWins() == 0) {
-                System.out.println("Упс, никто не победил.");
-            } else {
-                System.out.println("Ух ты, у нас несколько победителей!");
-                System.out.print("Поздравляем:");
-                for (int i = 0; i < winnersCounter; i++) {
-                    System.out.print(" " + winners[i].getName());
-                }
-                System.out.println("!");
-            }
+            return;
+        }
+        System.out.println("Ух ты, у нас несколько победителей!");
+        System.out.print("Поздравляем:");
+        for (int i = 0; i < winnersCounter; i++) {
+            System.out.print(" " + winners[i].getName());
+        }
+        System.out.println("!");
+    }
+
+    private void resetPlayersWins() {
+        for (Player player : players) {
+            player.resetWins();
         }
     }
 }
