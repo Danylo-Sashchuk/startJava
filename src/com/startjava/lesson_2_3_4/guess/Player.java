@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private int[] attempts;
     private int countAttempts;
+    private int countWins;
 
     public Player(String name) {
         this.name = name;
@@ -21,11 +22,26 @@ public class Player {
         return Arrays.copyOf(attempts, countAttempts);
     }
 
+    public void setAttempt(int number) {
+        if (number <= 0 || number > 100) {
+            throw new RuntimeException("Incorrect number");
+        }
+        addNumber(number);
+    }
+
     public int getCountAttempts() {
         return countAttempts;
     }
 
-    public void addNumber(int number) {
+    public int getCountWins() {
+        return countWins;
+    }
+
+    public void addWin() {
+        countWins++;
+    }
+
+    private void addNumber(int number) {
         attempts[countAttempts++] = number;
     }
 
