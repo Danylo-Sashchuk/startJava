@@ -44,31 +44,19 @@ public class GuessNumber {
 
     private void playRound() {
         setUp();
-        do {
-            if (makeMove(player1)) {
-                return;
-            }
-            if (!player1.hasAttempts()) {
-                System.out.println("У игрока " + player1.getName() + " закончились попытки.");
-            }
-            if (makeMove(player2)) {
-                return;
         for (int j = 0; j < Player.ATTEMPTS_LIMIT; j++) {
             for (Player player : players) {
-                boolean isWinnerDetermined = makeMove(player);
-                if (isWinnerDetermined) {
+                if (makeMove(player)) {
                     player.addWin();
                     return;
                 }
-                hasAttempts(player);
+                if (!player.hasAttempts()) {
+                    System.out.println("У игрока " + player.getName() + " закончились попытки.");
+                }
             }
         }
-        System.out.println("\nНикто из игроков не угадал число!");
-        printAttempts();
-        } while (player2.hasAttempts());
-        System.out.println("У игрока " + player2.getName() + " закончились попытки.");
         System.out.println("Никто из игроков не угадал число!");
-        printAttempts(player1, player2);
+        printAttempts();
     }
 
     private void setUp() {
@@ -80,10 +68,6 @@ public class GuessNumber {
     }
 
     private void generateTargetNumber() {
-        Random rand = new Random();
-        targetNumber = rand.nextInt(100) + 1;
-    }
-
         Random r = new Random();
         targetNumber = r.nextInt(100) + 1;
     }
@@ -106,27 +90,15 @@ public class GuessNumber {
 
     private boolean isGuessed(Player player) {
         int playerNumber = player.getLastAttempt();
-        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." :
-                playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
-        return targetNumber == playerNumber;
         if (playerNumber == targetNumber) {
             System.out.println("\nПоздравляем! " + player.getName() + ", вы угадали " + targetNumber +
                     " с " + player.getCountAttempts() + " попытки!");
-            printAttempts(player1, player2);
+            printAttempts(players);
             return true;
         }
-        if (playerNumber < targetNumber) {
-            System.out.println("Число " + playerNumber + " меньше того, что загадал компьютер.");
-        }
-        if (playerNumber > targetNumber) {
-            System.out.println("Число " + playerNumber + " больше того, что загадал компьютер.");
-        }
-        return false;
-    }
-
-    private void printCongratulations(Player winner) {
-        System.out.println("Поздравляем! " + winner.getName() + ", вы угадали " + targetNumber +
-                " с " + winner.getCountAttempts() + " попытки!");
+        System.out.println(playerNumber < targetNumber ? "Число " + playerNumber + " меньше того, что загадал компьютер." :
+                playerNumber > targetNumber ? "Число " + playerNumber + " больше того, что загадал компьютер." : "");
+        return targetNumber == playerNumber;
     }
 
     private void printAttempts() {
@@ -138,16 +110,16 @@ public class GuessNumber {
             System.out.println();
         }
     }
+
     private void printAttempts(Player... players) {
         for (Player player : players) {
-            System.out.println(player1.getName() + ", вот ваши числа:");
+            System.out.println(player.getName() + ", вот ваши числа:");
             for (int attempt : player.getAttempts()) {
                 System.out.print(attempt + " ");
             }
             System.out.println();
         }
     }
-}
 
     private void hasAttempts(Player player) {
         if (player.getCountAttempts() == Player.ATTEMPTS_LIMIT) {
