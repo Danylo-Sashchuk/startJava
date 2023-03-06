@@ -48,7 +48,7 @@ public class GuessNumber {
         for (int j = 0; j < Player.ATTEMPTS_LIMIT; j++) {
             for (Player player : players) {
                 if (makeMove(player)) {
-                    player.addWin();
+                    player.incrementWin();
                     return;
                 }
                 if (!player.hasAttempts()) {
@@ -82,9 +82,9 @@ public class GuessNumber {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", введите число: ");
         try {
-            player.setAttempt(scan.nextInt());
+            player.addAttempt(scan.nextInt());
         } catch (RuntimeException e) {
-            System.out.println("Некорретное число!\nВведите число в пределах (0, 100].");
+            System.out.println("Некорректное число!\nВведите число в пределах (0, 100].");
             inputNumber(player);
         }
     }

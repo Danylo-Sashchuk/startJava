@@ -22,11 +22,11 @@ public class Player {
         return Arrays.copyOf(attempts, countAttempts);
     }
 
-    public void setAttempt(int number) {
+    public void addAttempt(int number) {
         if (number <= 0 || number > 100) {
-            throw new RuntimeException("Incorrect number");
+            throw new RuntimeException("Number is not in the range [0;100).");
         }
-        addNumber(number);
+        attempts[countAttempts++] = number;
     }
 
     public int getCountAttempts() {
@@ -41,12 +41,8 @@ public class Player {
         countWins = 0;
     }
 
-    public void addWin() {
+    public void incrementWin() {
         countWins++;
-    }
-
-    private void addNumber(int number) {
-        attempts[countAttempts++] = number;
     }
 
     public void clearAttempts() {
@@ -59,6 +55,6 @@ public class Player {
     }
 
     public boolean hasAttempts() {
-        return getCountAttempts() != ATTEMPTS_LIMIT;
+        return attempts[countAttempts - 1] != ATTEMPTS_LIMIT;
     }
 }
