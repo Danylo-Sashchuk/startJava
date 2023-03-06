@@ -22,6 +22,10 @@ public class Player {
         return Arrays.copyOf(attempts, countAttempts);
     }
 
+    public int getLastAttempt() {
+        return attempts[countAttempts - 1];
+    }
+
     public void addAttempt(int number) {
         if (number <= 0 || number > 100) {
             throw new RuntimeException("Number is not in the range [0;100).");
@@ -50,11 +54,7 @@ public class Player {
         countAttempts = 0;
     }
 
-    public int getLastAttempt() {
-        return attempts[countAttempts - 1];
-    }
-
     public boolean hasAttempts() {
-        return attempts[countAttempts - 1] != ATTEMPTS_LIMIT;
+        return countAttempts != ATTEMPTS_LIMIT;
     }
 }

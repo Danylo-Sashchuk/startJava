@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GuessNumber {
     private final Player[] players;
     private int targetNumber;
-    private final int ROUNDS_LIMIT = 3;
+    static final int ROUNDS_LIMIT = 3;
 
     public GuessNumber(Player... players) {
         this.players = shufflePlayers(players);
