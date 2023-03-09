@@ -1,6 +1,8 @@
-CREATE DATABASE Jaegers;
+CREATE DATABASE jaegers;
+
 
 DROP TABLE IF EXISTS jaegers;
+
 
 CREATE TABLE jaegers (
     id          serial Primary key,
@@ -14,5 +16,5 @@ CREATE TABLE jaegers (
     kaijuKill   integer
 );
 
-\i init_db.sql
-\i queries.sql
+\ir init_db.sql
+\ir queries.sql

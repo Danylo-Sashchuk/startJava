@@ -1,11 +1,63 @@
-select * from jaegers;
-select * from jaegers where status = true;
-select * from jaegers where mark IN (1, 4);
-select * from jaegers where mark NOT IN (1, 4);
-/* test comment */
-select * from jaegers order by mark desc;
-select * from jaegers where launch = (select min(launch) from jaegers);
-select * from jaegers where kaijuKill = (select max(kaijuKill) from jaegers);
-select trunc(avg(weight), 2) as avg_weight from jaegers;
-update jaegers set kaijuKill = kaijuKill + 1 where status = true;
-delete from jaegers where status = false;
+    
+/* all rows */
+SELECT *
+FROM jaegers;
+    
+    
+/*active jaegers*/
+SELECT *
+FROM jaegers
+WHERE status = TRUE;
+    
+    
+/*mark 1 and 4 jaegers*/
+SELECT *
+FROM jaegers
+WHERE mark IN (1,
+               4);
+    
+    
+/*all jaegers except mark 1 and 4*/
+SELECT *
+FROM jaegers
+WHERE mark NOT IN (1,
+                   4);
+    
+    
+/*jaegers sorted by mark on descending order*/
+SELECT *
+FROM jaegers
+ORDER BY mark DESC;
+    
+    
+/*oldest jaeger*/
+SELECT *
+FROM jaegers
+WHERE launch =
+    (SELECT min(launch)
+     FROM jaegers);
+    
+    
+/*jaegers with the most kills*/
+SELECT *
+FROM jaegers
+WHERE kaijuKill =
+    (SELECT max(kaijuKill)
+     FROM jaegers);
+    
+    
+/*avarage jaeger weight*/
+SELECT trunc(avg(weight), 2) AS avg_weight
+FROM jaegers;
+    
+    
+/*all active jaegers get one more kill*/
+UPDATE jaegers
+SET kaijuKill = kaijuKill + 1
+WHERE status = TRUE;
+    
+    
+/*delete destroyed jaegers*/
+DELETE
+FROM jaegers
+WHERE status = FALSE;
