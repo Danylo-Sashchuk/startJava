@@ -1,5 +1,6 @@
     
-/* all rows */
+    
+/* all jaegers */
 SELECT *
 FROM jaegers;
     

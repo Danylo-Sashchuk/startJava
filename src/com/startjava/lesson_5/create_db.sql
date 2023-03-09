@@ -1,5 +1,6 @@
 CREATE DATABASE jaegers;
 
+\c  jaegers;
 
 DROP TABLE IF EXISTS jaegers;
 
