@@ -2,6 +2,7 @@ select * from jaegers;
 select * from jaegers where status = true;
 select * from jaegers where mark IN (1, 4);
 select * from jaegers where mark NOT IN (1, 4);
+/* test comment */
 select * from jaegers order by mark desc;
 select * from jaegers where launch = (select min(launch) from jaegers);
 select * from jaegers where kaijuKill = (select max(kaijuKill) from jaegers);
